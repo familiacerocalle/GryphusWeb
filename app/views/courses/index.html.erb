@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cursos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Contenido</th>
+      <th>Puntos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.nombre %></td>
+        <td><%= course.contenido %></td>
+        <td><%= course.puntos %></td>
+        <td><%= link_to 'Ver', course %></td>
+        <td><%= link_to 'Editar', edit_course_path(course) %></td>
+        <td><%= link_to 'Eliminar', course, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Curso', new_course_path %>
+<%= link_to 'Regresar', home_index_path %>

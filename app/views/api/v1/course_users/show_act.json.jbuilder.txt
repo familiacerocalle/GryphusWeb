@@ -1,0 +1,10 @@
+json.cursos @courseusers do |elemento|
+  json.id elemento.id
+  json.course_id elemento.course_id
+  json.user_id elemento.user_id
+  json.fechainicio elemento.fechainicio
+  json.fechafin elemento.fechafin
+  json.created_at elemento.created_at
+  json.updated_at elemento.updated_at
+  json.nombrecurso elemento.course.nombre
+end

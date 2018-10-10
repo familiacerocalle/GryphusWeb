@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Se ha inscrito el curso: </h1>
+
+<p>
+  <strong>Curso:</strong>
+  <%= @inscripcion.course.nombre %>
+  <!--
+  < %= @inscripcion.course_id %>
+  -->
+</p>
+<p>
+  <strong>Usuario:</strong>
+  <%= @inscripcion.user.nombre %>
+  <%= @inscripcion.user.primerApellido %>
+  <%= @inscripcion.user.segundoApellido %>
+</p>
+<p>
+  <strong>Fechainicio:</strong>
+  <%= @inscripcion.fechainicio %>
+</p>
+
+
+<%= link_to 'Regresar', course_users_index_path %>

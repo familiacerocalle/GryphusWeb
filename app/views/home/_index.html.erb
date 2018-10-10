@@ -1,0 +1,112 @@
+<!-- Esta es una vista parcial de la página principal que tiene las noticias y los enlaces a otras secciones -->
+
+<br>
+<% if user_signed_in? %>
+
+<br>
+<br>
+
+  <h2>ADMINISTRAR</h2>
+  <%= link_to 'CURSOS', controller: 'courses' %>
+  <br>
+  <%= link_to 'NIVELES DE RETOS', controller: 'challengelevels' %>
+  <br>
+  <%= link_to 'RETOS', controller: 'challenges' %>
+  <br>
+  <%= link_to 'TIPO QUEJA', controller: 'complaints' %>
+
+<br>
+<br>
+
+  <h2>USUARIOS</h2>
+  <%= link_to 'GYM', controller: 'course_users' %>
+  <br>
+  <%= link_to 'QUEJAS', controller: 'complaint_users' %>
+  <br>
+  <%= link_to 'RETOS', controller: 'challenge_users' %>
+<% end %>
+
+<br>
+<br>
+<br>
+<br>
+<h1>Noticias</h1>
+<br>
+<h2>¿Cuál es "el poder del cono" en Bogotá?</h2>
+<p>
+  A seis meses de haberse implementado la estrategia en la capital colombiana, la Secretaría de Movilidad hace un balance del alcance que han tenido estos "conos humanos" creados para corregir a los conductores mal parqueados.
+Excepto por aquel vergonzoso momento en el que un "cono humano" respondió con puños y patadas al empujón de un motociclista infractor en una calle de Bogotá, el balance de la estrategia contra los mal parqueados implementada por las autoridades de tránsito del distrito, ha sido "positivo", calificado así por el titular de esta secretaría Juan Pablo Bocarejo.
+
+¿Cómo medir el poder que han tenido los "conos con piernas y megáfonos" que operan en calles y carreras de la capital? Conozca las siguientes cifras.
+
+-La campaña ha intervenido 23 mil 888 conductores a través de la acción lúdica en calle.
+
+-Se ha implementado en 18 de las 20 localidades de la ciudad.
+
+-El 87,8 % de las personas retiró el vehículo gracias al llamado de los conos, es decir, que un aproximado de 9 de cada 10 personas en contacto con conos mueve el vehículo
+
+-Un 11,2 % de los conductores llamados porlos conos requirió comparendo y un 1,10 % levantamiento con grúa.
+
+-El 85 % de los bogotanos calificó la campaña como buena o muy buena.
+
+-El Poder del Cono ha logrado 9 millones 579 mil 628 impactos, siendo una campaña altamente efectiva al lograr un costo de 110 pesos por ciudadano impactado.
+
+-La campaña en calle está acompañada de una serie web educativa sobre la normativa y comportamientos relacionados con el mal parqueo. En sus primeros cuatro capítulos ha alcanzado 3 millones 518 mil 289 reproducciones en YouTube, Facebook y Twitter.
+
+-Aunque pareciera que hay "conos humanos" por todas partes sólo 30 personas prestan esta labor.
+
+-La secretaría de Movilidad da respuesta a los ciudadanos que denuncian mal parqueo a través de las redes sociales con la etiqueta #ConosAlRescate.
+
+-La iniciativa, puramente bogotana, se extenderá a otros sectores de la capital y ya ha sido replicada por otras secretarías de movilidad del país y, para conocimiento de los que acostumbran a parquearse en cualquier parte, continuará en 2018.
+  
+Fuente: https://www.noticiasrcn.com/tags/cultura-ciudadana
+</p>
+<br>
+<h2>¡Le pasaron por encima! Mujer sufrió graves lesiones al entrar a articulado de Transmilenio</h2>
+<p>
+  Blanca Nieves Flores, con golpes en brazos, piernas y glúteos, denuncia que tan solo una joven le prestó atención al caer de la plataforma.
+
+Flores esperaba un bus de Transmilenio el primero de marzo cuando cayó al vacío debido a que el articulado quedó a varios centímetros de la plataforma.
+
+Sin embargo, pese a que había varias personas a su alrededor, ninguna la auxilió y pasaron sobre ella. Imágenes entregadas a Noticias Caracol así lo demuestran.
+
+De acuerdo con cifras de las autoridades, en el año 2016 se presentaron 384 accidentes en articulados, 637 en alimentadores y 5.069 en SITP provisional.
+
+Fuente: https://noticias.caracoltv.com/bogota/le-pasaron-por-encima-mujer-sufrio-graves-lesiones-al-entrar-articulado-de-transmilenio
+</p>
+<br>
+<h2>"Invito a mejorar la cultura ciudadana": general Sánchez</h2>
+<p>
+Este jueves se realizó la ceremonia de transmisión de mando de la Policía Metropolitana de Bogotá en la Plaza de Bolívar.
+Por: Julián Jerez/NoticiasRCN.com
+ 
+Durante la ceremonia de transmisión de mando de la Policía de Bogotá, el nuevo comandante, general Édgar Sánchez, reconoció los logros durante la comandancia del general Martínez, como la disminución en la tasa de homicidios en la ciudad, la lucha contra el crimen organizado y la reducción de delitos. 
+ 
+"Yo no me atrevería a decir que partimos de un estado de caos en la ciudad. Hay unas estadísticas criminales que dan cuenta de un trabajo sostenido de las autoridades administrativas y políticas de la ciudad, de la mano con la Policía Nacional, y hoy encontramos unos índices de criminalidad que hay que sostener", dijo el nuevo comandante de la Policía Metropolitana de Bogotá, general Édgar Sánchez.
+ 
+El general enfatizó en que hay que continuar haciendo esfuerzos e implementar estrategias para seguir contribuyendo en la seguridad de los bogotanos. 
+ 
+En relación al microtráfico en la ciudad y a la intervención de las 'ollas', el general Sánchez aseguró que "la Policía Metropolitana de Bogotá tiene como foco de atención el 'Bronx' y otros más de la capital. Vamos a seguir trabajando con las autoridades para garantizar la seguridad de los habitantes del sector y de la ciudadanía".
+ 
+Para el nuevo comandante de la Policía de Bogotá no es ajena la problemática en cuanto al irrespeto que le está teniendo la ciudadanía por los uniformados, por eso hizo un llamado al respeto y tolerancia. 
+ 
+"Invito a todos los ciudadanos a que en un compromiso colectivo trabajemos en mejorar la cultura ciudadana, si no hay posibilidad de cultura ciudadana esto es muy complicado ya que es una premisa para la convivencia. Que los ciudadanos entiendan que hay unos deberes y unas obligaciones", recalcó Sánchez.
+ 
+En relación a las denuncias de la ciudadanía por presuntos abusos de la autoridad en diferentes escenarios de protesta y presencia de los uniformados, el general Sánchez, aseguró que la Policía se está capacitando constantemente en conocimientos de derechos humanos. 
+ 
+“Hemos dicho insistentemente que el acatamiento y cumplimiento de nuestro código de ética debe ser nuestra luz y nuestra guía. En ese sentido trabajaremos de una manera incansable para seguir capacitando y fortaleciendo nuestros conocimientos sobre el respeto por los derechos de los ciudadanos”, recalcó el general Sánchez.
+ 
+En cuanto a la relación con la Alcaldía de Bogotá, donde diferentes analistas coinciden en que la Policía no puede dar solución a todo si no se tiene el apoyo de la administración, el nuevo comandante de la Policía aseguró que espera trabajar mancomunadamente para tener éxito en las labores realizadas. 
+ 
+"Hay un compromiso de la Alcaldía, por lo cual esperamos que en cumplimiento de las responsabilidades constitucionales y legales, al igual que de un compromiso moral, podamos hacer un conjunto de esfuerzos que nos ayuden a seguir caminando este sendero exitoso que han tenido las autoridades en materia de convivencia en Bogotá", sostuvo.
+ 
+En cuanto al hurto de celulares, el general precisó que se continuará con la lucha para erradicar esta problemática y capturar a esos delincuentes. 
+ 
+"No hay nada más que mortifique a un ciudadano que le roben el celular (…)  Nosotros estamos refinando la estrategia que tenía el general Martínez y vamos a mantener una gerencia de unos delitos que están muy bien identificados y focalizados en algunas regiones de la capital y allí seguiremos trabajando para reducir el índice de robos de celulares", enfatizó. 
+ 
+Por otro lado, el saliente comandante de la Policía de Bogotá, general Martínez, dijo que "Nunca podremos tener total seguridad y total tranquilidad, pero el país debe tener la convicción que tiene una policía comprometida de manera permanente y plena que trabaja en alcanzar las cifras de tranquilidad y seguridad que tanto reclamamos las personas como ciudadanos que somos". 
+ 
+El general Luis Eduardo Martínez pasará a la dirección Administrativa y Financiera de la institución.
+  
+Fuente: https://www.noticiasrcn.com/nacional-bogota/invito-mejorar-cultura-ciudadana-general-sanchez
+</p>

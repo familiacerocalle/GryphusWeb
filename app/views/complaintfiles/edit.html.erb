@@ -1,0 +1,6 @@
+<h1>Editar Archivo</h1>
+
+<%= render 'form', complaintfile: @complaintfile %>
+
+<%= link_to 'Ver', @complaintfile %> |
+<%= link_to 'Regresar', complaintfiles_path(:idqueja => @complaintfile.complaint_user_id) %>

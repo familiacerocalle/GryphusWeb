@@ -1,0 +1,9 @@
+json.status :success
+json.cursos @coursesdisp do |course|
+  json.id course.id
+  json.nombre course.nombre
+  json.contenido course.contenido
+  json.puntos course.puntos
+  json.created_at course.created_at
+  json.updated_at course.updated_at
+end

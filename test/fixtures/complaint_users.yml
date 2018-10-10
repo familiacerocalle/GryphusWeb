@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  complaint: one
+  user: one
+  direccion: MyString
+  comentarios: MyString
+
+two:
+  complaint: two
+  user: two
+  direccion: MyString
+  comentarios: MyString

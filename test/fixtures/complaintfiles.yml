@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  complaint_user: one
+  descripcion: MyString
+  archivo: MyString
+
+two:
+  complaint_user: two
+  descripcion: MyString
+  archivo: MyString

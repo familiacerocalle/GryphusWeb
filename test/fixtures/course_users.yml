@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course: one
+  user: one
+  fechainicio: 2018-07-23 07:48:26
+  fechafin: 2018-07-23 07:48:26
+
+two:
+  course: two
+  user: two
+  fechainicio: 2018-07-23 07:48:26
+  fechafin: 2018-07-23 07:48:26

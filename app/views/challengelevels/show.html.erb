@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @challengelevel.descripcion %>
+</p>
+
+<p>
+  <strong>Puntos:</strong>
+  <%= @challengelevel.puntos %>
+</p>
+
+<%= link_to 'Editar', edit_challengelevel_path(@challengelevel) %> |
+<%= link_to 'Regresar', challengelevels_path %>

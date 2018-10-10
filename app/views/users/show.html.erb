@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @user.nombre %>
+</p>
+
+<p>
+  <strong>Primerapellido:</strong>
+  <%= @user.primerApellido %>
+</p>
+
+<p>
+  <strong>Segundoapellido:</strong>
+  <%= @user.segundoApellido %>
+</p>
+
+<p>
+  <strong>Puntosacumulados:</strong>
+  <%= @user.puntosAcumulados %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

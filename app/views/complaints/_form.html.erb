@@ -1,0 +1,22 @@
+<%= form_with(model: complaint, local: true) do |form| %>
+  <% if complaint.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(complaint.errors.count, "error") %> No se pudo guardar la queja:</h2>
+
+      <ul>
+      <% complaint.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Descripción" %>
+    <%= form.text_field :descripcion %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Guardar" %>
+  </div>
+<% end %>

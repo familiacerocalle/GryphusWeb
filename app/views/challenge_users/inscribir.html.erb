@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Se ha inscrito el reto: </h1>
+
+<p>
+  <strong>Curso:</strong>
+  <%= @inscripcion.challenge.descripcion %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @inscripcion.user.nombre %>
+  <%= @inscripcion.user.primerApellido %>
+  <%= @inscripcion.user.segundoApellido %>
+</p>
+
+<p>
+  <strong>Fechainicio:</strong>
+  <%= @inscripcion.fechainicio %>
+</p>
+
+
+<%= link_to 'Regresar', challenge_users_index_path %>

@@ -1,0 +1,27 @@
+<%= form_with(model: challengelevel, local: true) do |form| %>
+  <% if challengelevel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(challengelevel.errors.count, "error") %> No se puede guardar el nivel de reto:</h2>
+
+      <ul>
+      <% challengelevel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Descripción" %>
+    <%= form.text_field :descripcion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :puntos %>
+    <%= form.number_field :puntos %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Guardar" %>
+  </div>
+<% end %>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Retos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>NivelReto</th>
+      <th>IDReto</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @challenges.each do |challenge| %>
+      <tr>
+        <td><%= challenge.challengelevel_id %></td>
+        <td><%= challenge.id %></td>
+        <td><%= challenge.descripcion %></td>
+        <td><%= link_to 'Ver', challenge %></td>
+        <td><%= link_to 'Editar', edit_challenge_path(challenge) %></td>
+        <td><%= link_to 'Eliminar', challenge, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Reto', new_challenge_path %>
+<br>
+<br>
+<%= link_to 'Regresar', home_index_path %>

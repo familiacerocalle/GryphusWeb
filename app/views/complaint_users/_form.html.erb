@@ -1,0 +1,56 @@
+<%= form_with(model: complaint_user, local: true) do |form| %>
+  <% if complaint_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(complaint_user.errors.count, "error") %> No se puede guardar esta queja de usuario:</h2>
+
+      <ul>
+      <% complaint_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Queja" %>
+    <%= form.select :complaint_id, Complaint.all.map{|c| [c.descripcion, c.id]} %>
+    <!--
+    < %= form.text_field :complaint_id %>
+    -->
+  </div>
+
+  <div class="field">
+    <%= form.label "Usuario" %>
+    <%= form.select :user_id, User.where(["id = ?", current_user.id]).map{|u| [u.nombre, u.id]} %>
+    <!--
+    < %= form.text_field :User_id %>
+    -->
+  </div>
+
+  <div class="field">
+    <%= form.label "Dirección" %>
+    <%= form.text_field :direccion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comentarios %>
+    <%= form.text_field :comentarios %>
+  </div>
+
+  <div>
+    <br>
+    <% if complaint_user.id.nil? %>
+      <p>(*** Guardar la queja para anexar archivos ***)</p>
+    <% else %>
+      <%= link_to 'Archivos', complaintfiles_path(:idqueja => complaint_user.id) %>
+    <% end %>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Guardar" %>
+  </div>
+<% end %>

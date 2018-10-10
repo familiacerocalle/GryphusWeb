@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Archivos de Queja</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Queja</th>
+      <th>Descripción</th>
+      <th>Archivo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @complaintfilesqueja.each do |complaintfile| %>
+      <tr>
+        <td><%= complaintfile.complaint_user.complaint.descripcion %></td>
+        <td><%= complaintfile.descripcion %></td>
+        <!--
+        <td>< %= complaintfile.archivo.to_s %></td>
+        -->
+        <td><%= image_tag complaintfile.archivo.to_s %></td>
+        <td><%= link_to 'Ver', complaintfile %></td>
+        <td><%= link_to 'Editar', edit_complaintfile_path(complaintfile) %></td>
+        <td><%= link_to 'Eliminar', complaintfile, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Archivo', new_complaintfile_path(:idqueja => @idqueja) %>
+<%= link_to 'Regresar', complaint_users_path %>

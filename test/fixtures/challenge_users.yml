@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  challenge: one
+  user: one
+  fechainicio: 2018-07-23 07:48:55
+  fechafin: 2018-07-23 07:48:55
+
+two:
+  challenge: two
+  user: two
+  fechainicio: 2018-07-23 07:48:55
+  fechafin: 2018-07-23 07:48:55

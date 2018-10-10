@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tipo de Queja:</strong>
+  <%= @complaintfile.complaint_user.complaint.descripcion %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @complaintfile.descripcion %>
+</p>
+
+<div>
+<%= image_tag @complaintfile.archivo.to_s %>
+</div>
+
+<%= link_to 'Editar', edit_complaintfile_path(@complaintfile) %> |
+<%= link_to 'Regresar', complaintfiles_path(:idqueja => @complaintfile.complaint_user_id) %>

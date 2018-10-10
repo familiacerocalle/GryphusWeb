@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mis Quejas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descripción</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @complaints.each do |complaint| %>
+      <tr>
+        <td><%= complaint.descripcion %></td>
+        <td><%= link_to 'Ver', complaint %></td>
+        <td><%= link_to 'Editar', edit_complaint_path(complaint) %></td>
+        <td><%= link_to 'Eliminar', complaint, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva Queja', new_complaint_path %>
+<br>
+<%= link_to 'Regresar', home_index_path %>

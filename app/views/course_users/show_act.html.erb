@@ -1,0 +1,36 @@
+<h1>Cursos Actuales</h1>
+<br>
+<br>
+
+
+<table>
+  <tr>
+    <th>CursoId</th>
+    <th>CursoNombre</th>
+    <th>UsuarioId</th>
+    <th>UsuarioNombre</th>
+    <th>FechaInicio</th>
+    <th>FechaFin</th>
+    <th></th>
+  </tr>
+
+  <% @courseusers.each do |courseuser| %>
+    <tr>
+      <td><%= courseuser.course.id %></td>
+      <td><%= courseuser.course.nombre %></td>
+      <td><%= courseuser.user.id %></td>
+      <td><%= courseuser.user.nombre %></td>
+      <td><%= courseuser.fechainicio %></td>
+      <td><%= courseuser.fechafin %></td>
+      <td><%= link_to "Finalizar", {:controller => "course_users", :action => "finalizar", :id => courseuser.id} %></td>
+    </tr>
+  <% end %>
+
+</table>
+
+
+<br>
+<br>
+<br>
+<br>
+<%= link_to 'Regresar', course_users_index_path %>

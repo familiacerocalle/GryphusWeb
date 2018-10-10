@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mis Quejas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Queja</th>
+      <th>Usuario</th>
+      <th>Direccion</th>
+      <th>Fecha</th>
+      <th>Comentarios</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @complaint_users.each do |complaint_user| %>
+      <tr>
+        <td><%= complaint_user.complaint.descripcion %></td>
+        <td><%= complaint_user.user.nombre %></td>
+        <td><%= complaint_user.direccion %></td>
+        <td><%= complaint_user.created_at %></td>
+        <td><%= complaint_user.comentarios %></td>
+        <td><%= link_to 'Ver', complaint_user %></td>
+        <td><%= link_to 'Editar', edit_complaint_user_path(complaint_user) %></td>
+        <td><%= link_to 'Eliminar', complaint_user, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva queja', new_complaint_user_path %>
+<br>
+<br>
+<%= link_to 'Regresar', home_index_path %>
