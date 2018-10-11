@@ -1,0 +1,4 @@
+tmp/
+public/
+config/database.yml
+tasks.txt
