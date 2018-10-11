@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :complaintfiles
 
   # Se comenta la línea y se reemplaza por la siguiente para que no use "show"

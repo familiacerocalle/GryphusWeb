@@ -18,6 +18,10 @@ class User < ApplicationRecord
 
   before_create -> {self.token = generate_token}
 
+  def is_admin?
+    %(dilkhushsoni2010@gmail.com).include?(email)
+  end
+
   private
   def generate_token
     loop do

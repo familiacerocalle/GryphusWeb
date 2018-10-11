@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_29_213243) do
+ActiveRecord::Schema.define(version: 2018_10_11_152403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: :cascade do |t|
+    t.string "file"
+    t.string "entity_type"
+    t.bigint "entity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entity_id", "entity_type"], name: "index_attachments_on_entity_id_and_entity_type"
+    t.index ["entity_type", "entity_id"], name: "index_attachments_on_entity_type_and_entity_id"
+  end
 
   create_table "challenge_users", force: :cascade do |t|
     t.bigint "challenge_id"
@@ -104,6 +114,8 @@ ActiveRecord::Schema.define(version: 2018_07_29_213243) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "token"
+    t.boolean "blocked", default: false
+    t.datetime "blocked_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["token"], name: "index_users_on_token", unique: true

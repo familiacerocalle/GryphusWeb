@@ -1,0 +1,25 @@
+<nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">LOGO</a>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav ml-md-auto d-md-flex">
+      <% if current_user %>
+        <li class="nav-item">
+          <%= link_to current_user.email, edit_user_registration_path, class: "nav-link", method: :delete %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Logout', destroy_user_session_path, class: "nav-link", method: :delete %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+        </li>
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+        <li class="nav-item">
+          <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
