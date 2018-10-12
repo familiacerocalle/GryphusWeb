@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :unblock_resuest, :unblock]
 
   # GET /users
   # GET /users.json
@@ -59,6 +59,11 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def unblock
+    # Send email to admin
+    redirect_to root_path, notice: 'Email has been send to admin'
   end
 
   private
