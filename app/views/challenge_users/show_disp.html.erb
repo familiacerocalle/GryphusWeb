@@ -14,7 +14,7 @@
     <tr>
       <td><%= challenge.id %></td>
       <td><%= challenge.descripcion %></td>
-      <td><%= link_to "Inscribir", {:controller => "challenge_users", :action => "inscribir", :challengeid => challenge.id, :userid => current_user.id} %></td>
+      <td><%= link_to "Enroll", {:controller => "challenge_users", :action => "enroll", :challengeid => challenge.id, :userid => current_user.id} %></td>
     </tr>
   <% end %>
 

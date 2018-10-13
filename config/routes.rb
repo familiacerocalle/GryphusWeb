@@ -25,24 +25,30 @@ Rails.application.routes.draw do
     member do
       get :unblock_resuest
       post :unblock
+      get :unblock_me
     end
   end
 
   get 'home/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'home/dashboard'
+
+  authenticated :user do
+    root 'home#dashboard', as: :authenticated_root
+  end
+
   root 'home#index'
 
   # Crear los caminos para las nuevas vistas
   get 'course_users/show_disp'
   get 'course_users/show_act'
   get 'course_users/show_hist'
-  get 'course_users/inscribir'
+  get 'course_users/enroll'
   get 'course_users/finalizar'
 
   get 'challenge_users/show_disp'
   get 'challenge_users/show_act'
   get 'challenge_users/show_hist'
-  get 'challenge_users/inscribir'
+  get 'challenge_users/enroll'
   get 'challenge_users/finalizar'
 
   namespace 'api' do

@@ -1,35 +1,35 @@
-<h1>Historial de Retos</h1>
-<br>
-<br>
-
-
-<table>
-  <tr>
-    <th>RetoId</th>
-    <th>RetoDescripcion</th>
-    <th>UsuarioId</th>
-    <th>UsuarioNombre</th>
-    <th>FechaInicio</th>
-    <th>FechaFin</th>
-    <th></th>
-  </tr>
-
-  <% @challengeusers.each do |challengeuser| %>
-    <tr>
-      <td><%= challengeuser.challenge.id %></td>
-      <td><%= challengeuser.challenge.descripcion %></td>
-      <td><%= challengeuser.user.id %></td>
-      <td><%= challengeuser.user.nombre %></td>
-      <td><%= challengeuser.fechainicio %></td>
-      <td><%= challengeuser.fechafin %></td>
-    </tr>
-  <% end %>
-
-</table>
-
-
-<br>
-<br>
-<br>
-<br>
-<%= link_to 'Regresar', challenge_users_index_path %>
+</br>
+</br>
+</br>
+</br>
+<div class='container'>
+  <div class="card">
+    <div class="card-header">
+      Completed Challenges
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#Id</th>
+            <th scope="col">Description</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @challengeusers.each do |challengeuser| %>
+            <tr>
+              <th scope="row"><%= challengeuser.challenge.id %></th>
+              <td><%= challengeuser.challenge.descripcion %></td>
+              <td><%= challengeuser.user.nombre %></td>
+              <td><%= challengeuser.fechainicio %></td>
+              <td><%= challengeuser.fechafin %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :unblock_resuest, :unblock]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :unblock_resuest, :unblock, :unblock_me]
 
   # GET /users
   # GET /users.json
@@ -62,8 +62,18 @@ class UsersController < ApplicationController
   end
 
   def unblock
-    # Send email to admin
+    UserMailer.unblock_request_to_admins(@user.id).deliver!
     redirect_to root_path, notice: 'Email has been send to admin'
+  end
+
+  def unblock_me
+    respond_to do |format|
+      if @user.update(blocked: false, blocked_at: nil)
+        format.html { redirect_to root_path, notice: 'Account successfully unblocked.' }
+      else
+        format.html { redirect_to :back, notice: @user.errors.to_a.to_sentence }
+      end
+    end
   end
 
   private
