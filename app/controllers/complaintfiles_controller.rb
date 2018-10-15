@@ -16,9 +16,8 @@ class ComplaintfilesController < ApplicationController
 
   # GET /complaintfiles/new
   def new
-    @idqueja = params[:idqueja]
     @complaintfile = Complaintfile.new
-    @complaintfile.complaint_user_id = @idqueja
+    @complaintfile.complaint_id = params[:complaint_id]
   end
 
   # GET /complaintfiles/1/edit
@@ -32,10 +31,10 @@ class ComplaintfilesController < ApplicationController
 
     respond_to do |format|
       if @complaintfile.save
-        format.html { redirect_to @complaintfile, notice: 'Complaintfile was successfully created.' }
+        format.html { redirect_to complaint_path(@complaintfile.complaint_id), notice: 'Complaintfile was successfully created.' }
         format.json { render :show, status: :created, location: @complaintfile }
       else
-        format.html { render :new }
+        format.html { render :new, alert: @complaintfile.errors.to_a.to_sentence }
         format.json { render json: @complaintfile.errors, status: :unprocessable_entity }
       end
     end
@@ -46,10 +45,10 @@ class ComplaintfilesController < ApplicationController
   def update
     respond_to do |format|
       if @complaintfile.update(complaintfile_params)
-        format.html { redirect_to @complaintfile, notice: 'Complaintfile was successfully updated.' }
+        format.html { redirect_to complaint_path(@complaintfile.complaint_id), notice: 'Complaintfile was successfully updated.' }
         format.json { render :show, status: :ok, location: @complaintfile }
       else
-        format.html { render :edit }
+        format.html { render :edit, alert: @complaintfile.errors.to_a.to_sentence }
         format.json { render json: @complaintfile.errors, status: :unprocessable_entity }
       end
     end
@@ -60,7 +59,7 @@ class ComplaintfilesController < ApplicationController
   def destroy
     @complaintfile.destroy
     respond_to do |format|
-      format.html { redirect_to complaintfiles_url, notice: 'Complaintfile was successfully destroyed.' }
+      format.html { redirect_to complaint_path(@complaintfile.complaint_id), notice: 'Complaintfile was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +72,6 @@ class ComplaintfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def complaintfile_params
-      params.require(:complaintfile).permit(:complaint_user_id, :descripcion, :archivo)
+      params.require(:complaintfile).permit(:complaint_id, :descripcion, :archivo, :user_id)
     end
 end

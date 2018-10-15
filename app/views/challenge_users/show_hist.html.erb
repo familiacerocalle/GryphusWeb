@@ -22,7 +22,7 @@
           <% @challengeusers.each do |challengeuser| %>
             <tr>
               <th scope="row"><%= challengeuser.challenge.id %></th>
-              <td><%= challengeuser.challenge.descripcion %></td>
+              <td><%= link_to challengeuser.challenge.descripcion, challenge_path(challengeuser.challenge) %></td>
               <td><%= challengeuser.user.nombre %></td>
               <td><%= challengeuser.fechainicio %></td>
               <td><%= challengeuser.fechafin %></td>

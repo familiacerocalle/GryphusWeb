@@ -15,8 +15,7 @@ class User < ApplicationRecord
   has_many :challenges, :through => :challenge_users
 
   # Relaciones entre las tablas
-  has_many :complaint_users
-  has_many :complaints, :through => :complaint_users
+  has_many :complaints
 
   before_create -> {self.token = generate_token}
 

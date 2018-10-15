@@ -21,7 +21,7 @@
           <% @courses_available.each do |course| %>
             <tr>
               <th scope="row"><%= course.id %></th>
-              <td><%= course.nombre %></td>
+              <td><%= link_to course.nombre, course_path(course) %></td>
               <td><%= link_to "Enroll", {:controller => "course_users", :action => "enroll", :courseid => course.id, :userid => current_user.id} %></td>
             </tr>
           <% end %>
@@ -45,24 +45,22 @@
             <th scope="col">#Id</th>
             <th scope="col">Descripcion</th>
             <th scope="col">User Name</th>
-            <th scope="col">Address</th>
+            <th scope="col">Complaint Type</th>
             <th scope="col">Complaint Date</th>
-            <th scope="col">Comments</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <% @complaint_users.each do |complaint| %>
+          <% @complaints.each do |complaint| %>
             <tr>
-              <th scope="row"><%= complaint.complaint.id %></th>
-              <td><%= complaint.complaint.descripcion %></td>
+              <th scope="row"><%= complaint.id %></th>
+              <td><%= complaint.descripcion %></td>
               <td><%= complaint.user.nombre %></td>
-              <td><%= complaint.direccion %></td>
+              <td><%= complaint.complaint_type.name %></td>
               <td><%= complaint.created_at %></td>
-              <td><%= complaint.comentarios %></td>
               <td>
                 <%= link_to 'View', complaint %>
-                <%= link_to 'Edit', edit_complaint_user_path(complaint) %>
+                <%= link_to 'Edit', edit_complaint_path(complaint) %>
                 <%= link_to 'Delete', complaint, method: :delete, data: { confirm: 'Are you sure?' } %>
               </td>
             </tr>
@@ -93,7 +91,7 @@
           <% @challenges_available.each do |challenge| %>
             <tr>
               <th scope="row"><%= challenge.id %></th>
-              <td><%= challenge.descripcion %></td>
+              <td><%= link_to challenge.descripcion, challenge_path(challenge) %></td>
               <td><%= link_to "Enroll", {:controller => "challenge_users", :action => "enroll", :challengeid => challenge.id, :userid => current_user.id} %></td>
             </tr>
           <% end %>

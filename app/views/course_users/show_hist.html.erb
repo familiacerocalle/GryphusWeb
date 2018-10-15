@@ -22,7 +22,7 @@
           <% @courseusers.each do |course| %>
             <tr>
               <th scope="row"><%= course.course.id %></th>
-              <td><%= course.course.nombre %></td>
+              <td><%= link_to course.course.nombre, course_path(course.course) %></td>
               <td><%= course.user.nombre %></td>
               <td><%= course.fechainicio %></td>
               <td><%= course.fechafin %></td>

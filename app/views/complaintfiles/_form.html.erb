@@ -1,49 +1,22 @@
-<!--
-< %= form_with(model: complaintfile, :html => {:multipart => true}) do |form| %>
--->
-<%= form_for @complaintfile, :html => {:multipart => true} do |form| %>
-  <% if complaintfile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(complaintfile.errors.count, "error") %> No se pudo gruardar el archivo:</h2>
-
-      <ul>
-      <% complaintfile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="container">
+  <div class="login-form">
+    <div class="main-div">
+      <div class="panel">
+        <h1>Complaints Files</h1>
+      </div>
+      </br>
+      <%= form_for(@complaintfile, html: { id: 'Login', multipart: true }) do |f| %>
+        <div class="form-group">
+          <%= f.text_field :descripcion, autofocus: true, autocomplete: "descripcion", placeholder: "Descripcion", class: "form-control", id: "inputEmail" %>
+        </div>
+        <div class="form-group">
+          <%= f.file_field :archivo %>
+        </div>
+        <%= hidden_field_tag 'complaintfile[user_id]', current_user.id %>
+        <%= hidden_field_tag 'complaintfile[complaint_id]', @complaintfile.complaint_id %>
+        <button type="submit" class="btn btn-primary">Save</button>
       <% end %>
-      </ul>
+      </br>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label "Queja" %>
-    <%= form.text_field :complaint_user_id, value: @idqueja %>
-    <!--
-    < %= form.select :id, ComplaintUser.where(["id = ?", @idqueja]).map{|u| [u.id]} %>
-    < %= form.text_field :complaint_user_id %>
-    < %= form.select :user_id, Complaint.where(["id = ?", current_user.id]).map{|u| [u.nombre, u.id]} %>
-    -->
   </div>
-
-  <div class="field">
-    <%= form.label "Descripción" %>
-    <%= form.text_field :descripcion %>
-  </div>
-<!--
-  <div class="field">
-    < %= form.label :archivo %>
-    < %= form.text_field :archivo %>
-  </div>
--->
-  <p>
-    <%= form.label :archivo, "Seleccionar Archivo: " %>
-    <%= form.file_field :archivo %>
-  </p>
-
-  <br>
-  <br>
-  <br>
-
-  <div class="actions">
-    <%= form.submit "Guardar" %>
-  </div>
-<% end %>
+</div>

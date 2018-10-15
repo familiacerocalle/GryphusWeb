@@ -1,22 +1,24 @@
-<%= form_with(model: complaint, local: true) do |form| %>
-  <% if complaint.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(complaint.errors.count, "error") %> No se pudo guardar la queja:</h2>
-
-      <ul>
-      <% complaint.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="container">
+  <div class="login-form">
+    <div class="main-div">
+      <div class="panel">
+        <h1>Complaints</h1>
+      </div>
+      </br>
+      <%= form_for(complaint, html: { id: 'Login', multipart: true }) do |f| %>
+        <div class="form-group">
+          <%= f.text_field :descripcion, autofocus: true, autocomplete: "descripcion", placeholder: "Descripcion", class: "form-control", id: "inputEmail" %>
+        </div>
+        <div class="form-group">
+          <%= f.select :complaint_type_id, options_for_select(@complaint_types), {}, { class: "form-control" } %>
+        </div>
+        <div class="form-group">
+          <%= file_field_tag :files %>
+        </div>
+        <%= hidden_field_tag 'complaint[user_id]', current_user.id %>
+        <button type="submit" class="btn btn-primary">Save</button>
       <% end %>
-      </ul>
+      </br>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label "Descripción" %>
-    <%= form.text_field :descripcion %>
   </div>
-
-  <div class="actions">
-    <%= form.submit "Guardar" %>
-  </div>
-<% end %>
+</div>
