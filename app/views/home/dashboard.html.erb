@@ -5,16 +5,16 @@
 
   <div class="card">
     <div class="card-header">
-      All Available Courses
-      <%= link_to 'Enrolled Courses', course_users_show_act_path, style: 'float: right;' %>
+      <%= t(:all_ava_Courses) %>
+      <%= link_to t(:enroll_courses), course_users_show_act_path, style: 'float: right;' %>
     </div>
     <div class="card-body">
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Actions</th>
+            <th scope="col">#<%= t(:id) %></th>
+            <th scope="col"><%= t(:name) %></th>
+            <th scope="col"><%= t(:actions) %></th>
           </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
             <tr>
               <th scope="row"><%= course.id %></th>
               <td><%= link_to course.nombre, course_path(course) %></td>
-              <td><%= link_to "Enroll", {:controller => "course_users", :action => "enroll", :courseid => course.id, :userid => current_user.id} %></td>
+              <td><%= link_to t(:enroll), {:controller => "course_users", :action => "enroll", :courseid => course.id, :userid => current_user.id} %></td>
             </tr>
           <% end %>
         </tbody>
@@ -35,19 +35,19 @@
 
   <div class="card">
     <div class="card-header">
-      My Complaints
-      <%= link_to 'New Complaint', new_complaint_path, style: 'float: right;' %>
+      <%= t(:my_complaints) %>
+      <%= link_to t(:new_complaint), new_complaint_path, style: 'float: right;' %>
     </div>
     <div class="card-body">
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#Id</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">User Name</th>
-            <th scope="col">Complaint Type</th>
-            <th scope="col">Complaint Date</th>
-            <th scope="col">Actions</th>
+            <th scope="col">#<%= t(:id) %></th>
+            <th scope="col"><%= t(:description) %></th>
+            <th scope="col"><%= t(:name) %></th>
+            <th scope="col"><%= t(:complaint_type) %></th>
+            <th scope="col"><%= t(:complaint_date) %></th>
+            <th scope="col"><%= t(:actions) %></th>
           </tr>
         </thead>
         <tbody>
@@ -59,9 +59,9 @@
               <td><%= complaint.complaint_type.name %></td>
               <td><%= complaint.created_at %></td>
               <td>
-                <%= link_to 'View', complaint %>
-                <%= link_to 'Edit', edit_complaint_path(complaint) %>
-                <%= link_to 'Delete', complaint, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to t(:view), complaint %>
+                <%= link_to t(:edit), edit_complaint_path(complaint) %>
+                <%= link_to t(:delete), complaint, method: :delete, data: { confirm: t(:are_you_sure) } %>
               </td>
             </tr>
           <% end %>
@@ -75,16 +75,16 @@
 
   <div class="card">
     <div class="card-header">
-      All Available Challenges
-      <%= link_to 'Enrolled Challenges', challenge_users_show_act_path, style: 'float: right;' %>
+      <%= t(:all_ava_challenges) %>
+      <%= link_to t(:enrolled_challenges), challenge_users_show_act_path, style: 'float: right;' %>
     </div>
     <div class="card-body">
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#Id</th>
-            <th scope="col">Description</th>
-            <th scope="col">Actions</th>
+            <th scope="col">#<%= t(:id) %></th>
+            <th scope="col"><%= t(:description) %></th>
+            <th scope="col"><%= t(:actions) %></th>
           </tr>
         </thead>
         <tbody>
@@ -92,7 +92,7 @@
             <tr>
               <th scope="row"><%= challenge.id %></th>
               <td><%= link_to challenge.descripcion, challenge_path(challenge) %></td>
-              <td><%= link_to "Enroll", {:controller => "challenge_users", :action => "enroll", :challengeid => challenge.id, :userid => current_user.id} %></td>
+              <td><%= link_to t(:enroll), {:controller => "challenge_users", :action => "enroll", :challengeid => challenge.id, :userid => current_user.id} %></td>
             </tr>
           <% end %>
         </tbody>

@@ -31,7 +31,7 @@ class ComplaintfilesController < ApplicationController
 
     respond_to do |format|
       if @complaintfile.save
-        format.html { redirect_to complaint_path(@complaintfile.complaint_id), notice: 'Complaintfile was successfully created.' }
+        format.html { redirect_to complaint_path(@complaintfile.complaint_id), notice: t(:com_file_succ_create) }
         format.json { render :show, status: :created, location: @complaintfile }
       else
         format.html { render :new, alert: @complaintfile.errors.to_a.to_sentence }
@@ -45,7 +45,7 @@ class ComplaintfilesController < ApplicationController
   def update
     respond_to do |format|
       if @complaintfile.update(complaintfile_params)
-        format.html { redirect_to complaint_path(@complaintfile.complaint_id), notice: 'Complaintfile was successfully updated.' }
+        format.html { redirect_to complaint_path(@complaintfile.complaint_id), notice: t(:com_file_succ_update) }
         format.json { render :show, status: :ok, location: @complaintfile }
       else
         format.html { render :edit, alert: @complaintfile.errors.to_a.to_sentence }
@@ -59,7 +59,7 @@ class ComplaintfilesController < ApplicationController
   def destroy
     @complaintfile.destroy
     respond_to do |format|
-      format.html { redirect_to complaint_path(@complaintfile.complaint_id), notice: 'Complaintfile was successfully destroyed.' }
+      format.html { redirect_to complaint_path(@complaintfile.complaint_id), notice: t(:com_file_succ_delete) }
       format.json { head :no_content }
     end
   end

@@ -4,7 +4,7 @@ class SessionsController < Devise::SessionsController
     self.resource = warden.authenticate!(auth_options)
     if resource.blocked
       signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
-      flash[:alert] = 'Your account is blocked, Please send a request to unblock.'
+      flash[:alert] = t(:account_block_info)
       respond_with resource, location: unblock_resuest_user_path(resource)
     else
       set_flash_message!(:notice, :signed_in)

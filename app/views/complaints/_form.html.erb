@@ -2,12 +2,12 @@
   <div class="login-form">
     <div class="main-div">
       <div class="panel">
-        <h1>Complaints</h1>
+        <h1><%= t(:complaints) %></h1>
       </div>
       </br>
       <%= form_for(complaint, html: { id: 'Login', multipart: true }) do |f| %>
         <div class="form-group">
-          <%= f.text_field :descripcion, autofocus: true, autocomplete: "descripcion", placeholder: "Descripcion", class: "form-control", id: "inputEmail" %>
+          <%= f.text_field :descripcion, autofocus: true, autocomplete: "descripcion", placeholder: t(:description), class: "form-control", id: "inputEmail" %>
         </div>
         <div class="form-group">
           <%= f.select :complaint_type_id, options_for_select(@complaint_types), {}, { class: "form-control" } %>
@@ -16,7 +16,7 @@
           <%= file_field_tag :files %>
         </div>
         <%= hidden_field_tag 'complaint[user_id]', current_user.id %>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary"><%= t(:save) %></button>
       <% end %>
       </br>
     </div>

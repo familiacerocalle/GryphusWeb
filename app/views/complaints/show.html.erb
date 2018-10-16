@@ -26,8 +26,8 @@
 
       </div>
       <div class="details col-md-6">
-        <h6 class="sizes">Descripcion: <%= @complaint.descripcion %></h6>
-        <h6 class="sizes">Complaint Type: <%= @complaint.complaint_type.name %></h6>
+        <h6 class="sizes"><%= t(:description) %>: <%= @complaint.descripcion %></h6>
+        <h6 class="sizes"><%= t(:complaint_type) %>: <%= @complaint.complaint_type.name %></h6>
       </div>
     </div>
   </div>
@@ -35,7 +35,7 @@
 
 <div class="row">
   <div class="col-md-8">
-    <h2 class="page-header">Complaint Files</h2>
+    <h2 class="page-header"><%= t(:complaint_files) %></h2>
       <section class="comment-list">
         <% @complaint.complaintfiles.each do |file| %>
           <article class="row">
@@ -51,8 +51,8 @@
                   <div class="comment-post">
                     <p><%= file.descripcion %></p>
                   </div>
-                  <%= link_to 'Edit', edit_complaintfile_path(file) %>
-                  <%= link_to 'Delete', file, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to t(:edit), edit_complaintfile_path(file) %>
+                  <%= link_to t(:delete), file, method: :delete, data: { confirm: t(:are_you_sure) } %>
                 </div>
               </div>
             </div>
@@ -62,4 +62,4 @@
   </div>
 </div>
 
-<%= link_to 'Add Complaint File', new_complaintfile_path(:complaint_id => @complaint.id) %>
+<%= link_to t(:add_complaint_file), new_complaintfile_path(:complaint_id => @complaint.id) %>

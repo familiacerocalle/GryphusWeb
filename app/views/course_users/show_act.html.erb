@@ -5,19 +5,19 @@
 <div class='container'>
   <div class="card">
     <div class="card-header">
-      Current Courses
-      <%= link_to 'Completed Courses', course_users_show_hist_path, style: 'float: right;' %>
+      <%= t(:current_courses) %>
+      <%= link_to t(:completed_Courses), course_users_show_hist_path, style: 'float: right;' %>
     </div>
     <div class="card-body">
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Course Name</th>
-            <th scope="col">User Name</th>
-            <th scope="col">Start Date</th>
-            <th scope="col">End Date</th>
-            <th scope="col">Action</th>
+            <th scope="col">#<%= t(:id) %></th>
+            <th scope="col"><%= t(:course_name) %></th>
+            <th scope="col"><%= t(:user_name) %></th>
+            <th scope="col"><%= t(:start_date) %></th>
+            <th scope="col"><%= t(:end_date) %></th>
+            <th scope="col"><%= t(:actions) %></th>
           </tr>
         </thead>
         <tbody>
@@ -28,7 +28,7 @@
               <td><%= course.user.nombre %></td>
               <td><%= course.fechainicio %></td>
               <td><%= course.fechafin %></td>
-              <td><%= link_to "Complete", {:controller => "course_users", :action => "finalizar", :id => course.id} %></td>
+              <td><%= link_to t(:complete), {:controller => "course_users", :action => "finalizar", :id => course.id} %></td>
             </tr>
           <% end %>
         </tbody>

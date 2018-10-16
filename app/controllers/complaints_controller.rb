@@ -30,7 +30,7 @@ class ComplaintsController < ApplicationController
     @complaint.attachments.build(file: params[:files]) if params[:files]
     respond_to do |format|
       if @complaint.save
-        format.html { redirect_to @complaint, notice: 'Complaint was successfully created.' }
+        format.html { redirect_to @complaint, notice: t(:complaint_succ_create) }
         format.json { render :show, status: :created, location: @complaint }
       else
         format.html { render :new, alert: @complaint.errors.to_a.to_sentence }
@@ -47,7 +47,7 @@ class ComplaintsController < ApplicationController
     end
     respond_to do |format|
       if @complaint.update(complaint_params)
-        format.html { redirect_to @complaint, notice: 'Complaint was successfully updated.' }
+        format.html { redirect_to @complaint, notice: t(:complaint_succ_update) }
         format.json { render :show, status: :ok, location: @complaint }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class ComplaintsController < ApplicationController
   def destroy
     @complaint.destroy
     respond_to do |format|
-      format.html { redirect_to root_url, notice: 'Complaint was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: t(:complaint_succ_delete) }
       format.json { head :no_content }
     end
   end

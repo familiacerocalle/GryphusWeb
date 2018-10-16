@@ -1,28 +1,35 @@
 <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
-  <%= link_to "LOGO", root_path, class: "navbar-brand" %>
+  <%= link_to t(:logo), root_path, class: "navbar-brand" %>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav ml-md-auto d-md-flex">
       <% if current_user %>
         <% if current_user.is_admin? %>
           <li class="nav-item">
-            <%= link_to 'Admin Panel', rails_admin_path, class: "nav-link" %>
+            <%= link_to t(:admin_panel), rails_admin_path, class: "nav-link" %>
           </li>
         <% end %>
         <li class="nav-item">
           <%= link_to current_user.email, edit_user_registration_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Logout', destroy_user_session_path, class: "nav-link", method: :delete %>
+          <%= link_to t(:logout), destroy_user_session_path, class: "nav-link", method: :delete %>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Home", root_path, class: "nav-link" %>
+        <li class="nav-item" style='display: inline-flex;'>
+          <%= link_to t(:english), "#{request.path}?locale=en", class: "nav-link" %>
+          <%= link_to '|', 'javascript:void(0)', class: "nav-link" %>
+          <%= link_to t(:spanish), "#{request.path}?locale=es", class: "nav-link" %>
         </li>
         <li class="nav-item">
         </li>
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
         <li class="nav-item">
-          <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+          <%= link_to t(:home), root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+        </li>
+          <%= link_to t(:sign_up), new_user_registration_path, class: "nav-link" %>
+        <li class="nav-item">
+          <%= link_to t(:login), new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>

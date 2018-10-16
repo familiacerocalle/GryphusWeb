@@ -5,19 +5,19 @@
 <div class='container'>
   <div class="card">
     <div class="card-header">
-      Current Challenges
-      <%= link_to 'Completed Challenges', challenge_users_show_hist_path, style: 'float: right;' %>
+      <%= t(:current_challenges) %>
+      <%= link_to t(:completed_challenges), challenge_users_show_hist_path, style: 'float: right;' %>
     </div>
     <div class="card-body">
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#Id</th>
-            <th scope="col">Description</th>
-            <th scope="col">User Name</th>
-            <th scope="col">Start Date</th>
-            <th scope="col">End Date</th>
-            <th scope="col">Actions</th>
+            <th scope="col">#<%= t(:id) %></th>
+            <th scope="col"><%= t(:description) %></th>
+            <th scope="col"><%= t(:user_name) %></th>
+            <th scope="col"><%= t(:start_date) %></th>
+            <th scope="col"><%= t(:end_date) %></th>
+            <th scope="col"><%= t(:actions) %></th>
           </tr>
         </thead>
         <tbody>
@@ -28,7 +28,7 @@
               <td><%= challenge.user.nombre %></td>
               <td><%= challenge.fechainicio %></td>
               <td><%= challenge.fechafin %></td>
-              <td><%= link_to "Complete", {:controller => "challenge_users", :action => "finalizar", :id => challenge.id} %></td>
+              <td><%= link_to t(:complete), {:controller => "challenge_users", :action => "finalizar", :id => challenge.id} %></td>
             </tr>
           <% end %>
         </tbody>

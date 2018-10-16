@@ -2,20 +2,20 @@
   <div class="login-form">
     <div class="main-div">
       <div class="panel">
-        <h1>Login</h1>
+        <h1><%= t(:forgot_password) %></h1>
       </div>
       </br>
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { id: 'Login', method: :post }) do |f| %>
         <%= devise_error_messages! %>
         <div class="form-group">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email Address", class: "form-control", id: "inputEmail" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: t(:email_address), class: "form-control", id: "inputEmail" %>
         </div>
       </br>
-        <button type="submit" class="btn btn-primary">Send me reset password instructions</button>
+        <button type="submit" class="btn btn-primary"><%= t(:send_me_reset_inst) %></button>
       <% end %>
       </br>
-      <%= link_to "Sign up", new_registration_path(resource_name) %><br />
-      <%= link_to "Sign in", new_session_path(resource_name) %><br />
+      <%= link_to t(:sign_up), new_registration_path(resource_name) %><br />
+      <%= link_to t(:sign_in), new_session_path(resource_name) %><br />
     </div>
   </div>
 </div>

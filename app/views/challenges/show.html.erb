@@ -26,8 +26,8 @@
 
       </div>
       <div class="details col-md-6">
-        <h6 class="sizes">Challenge Level: <%= @challenge.challengelevel.descripcion %></h6>
-        <h6 class="sizes">Descripcion: <%= @challenge.descripcion %></h6>
+        <h6 class="sizes"><%= t(:challenge_level) %>: <%= @challenge.challengelevel.descripcion %></h6>
+        <h6 class="sizes"><%= t(:description) %>: <%= @challenge.descripcion %></h6>
       </div>
     </div>
   </div>
