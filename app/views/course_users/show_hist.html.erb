@@ -1,35 +1,35 @@
-<h1>Historial de Cursos</h1>
-<br>
-<br>
-
-
-<table>
-  <tr>
-    <th>CursoId</th>
-    <th>CursoNombre</th>
-    <th>UsuarioId</th>
-    <th>UsuarioNombre</th>
-    <th>FechaInicio</th>
-    <th>FechaFin</th>
-    <th></th>
-  </tr>
-
-  <% @courseusers.each do |courseuser| %>
-    <tr>
-      <td><%= courseuser.course.id %></td>
-      <td><%= courseuser.course.nombre %></td>
-      <td><%= courseuser.user.id %></td>
-      <td><%= courseuser.user.nombre %></td>
-      <td><%= courseuser.fechainicio %></td>
-      <td><%= courseuser.fechafin %></td>
-    </tr>
-  <% end %>
-
-</table>
-
-
-<br>
-<br>
-<br>
-<br>
-<%= link_to 'Regresar', course_users_index_path %>
+</br>
+</br>
+</br>
+</br>
+<div class='container'>
+  <div class="card">
+    <div class="card-header">
+      <%= t(:completed_Courses) %>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#<%= t(:id) %></th>
+            <th scope="col"><%= t(:course_name) %></th>
+            <th scope="col"><%= t(:user_name) %></th>
+            <th scope="col"><%= t(:start_date) %></th>
+            <th scope="col"><%= t(:end_date) %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @courseusers.each do |course| %>
+            <tr>
+              <th scope="row"><%= course.course.id %></th>
+              <td><%= link_to course.course.nombre, course_path(course.course) %></td>
+              <td><%= course.user.nombre %></td>
+              <td><%= course.fechainicio %></td>
+              <td><%= course.fechafin %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="login-form">
+    <div class="main-div">
+      <div class="panel">
+        <h2>Unblock Request</h2>
+      </div>
+      </br>
+      <%= form_for(@user, url: unblock_user_path(@user), html: { id: 'Login', method: :post }) do |f| %>
+        <button type="submit" class="btn btn-primary">Send Request</button>
+      <% end %>
+      </br>
+    </div>
+  </div>
+</div>

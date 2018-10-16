@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  ADMIN_EMAIL = %(dilkhushsoni2010@gmail.com)
+
   # Relaciones entre las tablas
   has_many :course_users
   has_many :courses, :through => :course_users
@@ -13,10 +15,13 @@ class User < ApplicationRecord
   has_many :challenges, :through => :challenge_users
 
   # Relaciones entre las tablas
-  has_many :complaint_users
-  has_many :complaints, :through => :complaint_users
+  has_many :complaints
 
   before_create -> {self.token = generate_token}
+
+  def is_admin?
+    ADMIN_EMAIL.include?(email)
+  end
 
   private
   def generate_token

@@ -1,0 +1,106 @@
+</br>
+</br>
+</br>
+<div class='container'>
+
+  <div class="card">
+    <div class="card-header">
+      <%= t(:all_ava_Courses) %>
+      <%= link_to t(:enroll_courses), course_users_show_act_path, style: 'float: right;' %>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#<%= t(:id) %></th>
+            <th scope="col"><%= t(:name) %></th>
+            <th scope="col"><%= t(:actions) %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @courses_available.each do |course| %>
+            <tr>
+              <th scope="row"><%= course.id %></th>
+              <td><%= link_to course.nombre, course_path(course) %></td>
+              <td><%= link_to t(:enroll), {:controller => "course_users", :action => "enroll", :courseid => course.id, :userid => current_user.id} %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  </br>
+  </br>
+
+  <div class="card">
+    <div class="card-header">
+      <%= t(:my_complaints) %>
+      <%= link_to t(:new_complaint), new_complaint_path, style: 'float: right;' %>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#<%= t(:id) %></th>
+            <th scope="col"><%= t(:description) %></th>
+            <th scope="col"><%= t(:name) %></th>
+            <th scope="col"><%= t(:complaint_type) %></th>
+            <th scope="col"><%= t(:complaint_date) %></th>
+            <th scope="col"><%= t(:actions) %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @complaints.each do |complaint| %>
+            <tr>
+              <th scope="row"><%= complaint.id %></th>
+              <td><%= complaint.descripcion %></td>
+              <td><%= complaint.user.nombre %></td>
+              <td><%= complaint.complaint_type.name %></td>
+              <td><%= complaint.created_at %></td>
+              <td>
+                <%= link_to t(:view), complaint %>
+                <%= link_to t(:edit), edit_complaint_path(complaint) %>
+                <%= link_to t(:delete), complaint, method: :delete, data: { confirm: t(:are_you_sure) } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  </br>
+  </br>
+
+  <div class="card">
+    <div class="card-header">
+      <%= t(:all_ava_challenges) %>
+      <%= link_to t(:enrolled_challenges), challenge_users_show_act_path, style: 'float: right;' %>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#<%= t(:id) %></th>
+            <th scope="col"><%= t(:description) %></th>
+            <th scope="col"><%= t(:actions) %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @challenges_available.each do |challenge| %>
+            <tr>
+              <th scope="row"><%= challenge.id %></th>
+              <td><%= link_to challenge.descripcion, challenge_path(challenge) %></td>
+              <td><%= link_to t(:enroll), {:controller => "challenge_users", :action => "enroll", :challengeid => challenge.id, :userid => current_user.id} %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  </br>
+  </br>
+</div>
+

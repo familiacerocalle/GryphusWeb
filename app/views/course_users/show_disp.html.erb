@@ -13,8 +13,8 @@
   <% @coursesdisp.each do |course| %>
     <tr>
       <td><%= course.id %></td>
-      <td><%= course.nombre %></td>
-      <td><%= link_to "Inscribir", {:controller => "course_users", :action => "inscribir", :courseid => course.id, :userid => current_user.id} %></td>
+      <td><%= link_to course.nombre, course_path(course) %></td>
+      <td><%= link_to "Enroll", {:controller => "course_users", :action => "enroll", :courseid => course.id, :userid => current_user.id} %></td>
     </tr>
   <% end %>
 

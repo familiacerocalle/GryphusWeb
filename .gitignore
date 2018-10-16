@@ -1,0 +1,6 @@
+tmp/
+public/
+config/database.yml
+tasks.txt
+.byebug_history
+log/

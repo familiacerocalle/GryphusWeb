@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_29_213243) do
+ActiveRecord::Schema.define(version: 2018_10_16_151505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: :cascade do |t|
+    t.string "file"
+    t.string "entity_type"
+    t.bigint "entity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entity_id", "entity_type"], name: "index_attachments_on_entity_id_and_entity_type"
+    t.index ["entity_type", "entity_id"], name: "index_attachments_on_entity_type_and_entity_id"
+  end
 
   create_table "challenge_users", force: :cascade do |t|
     t.bigint "challenge_id"
@@ -41,30 +51,30 @@ ActiveRecord::Schema.define(version: 2018_07_29_213243) do
     t.index ["challengelevel_id"], name: "index_challenges_on_challengelevel_id"
   end
 
-  create_table "complaint_users", force: :cascade do |t|
-    t.bigint "complaint_id"
-    t.bigint "user_id"
-    t.string "direccion"
-    t.string "comentarios"
+  create_table "complaint_types", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["complaint_id"], name: "index_complaint_users_on_complaint_id"
-    t.index ["user_id"], name: "index_complaint_users_on_user_id"
   end
 
   create_table "complaintfiles", force: :cascade do |t|
-    t.bigint "complaint_user_id"
+    t.bigint "complaint_id"
+    t.bigint "user_id"
     t.string "descripcion"
     t.string "archivo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["complaint_user_id"], name: "index_complaintfiles_on_complaint_user_id"
+    t.index ["complaint_id"], name: "index_complaintfiles_on_complaint_id"
+    t.index ["user_id"], name: "index_complaintfiles_on_user_id"
   end
 
   create_table "complaints", force: :cascade do |t|
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "complaint_type_id"
   end
 
   create_table "course_users", force: :cascade do |t|
@@ -104,6 +114,9 @@ ActiveRecord::Schema.define(version: 2018_07_29_213243) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "token"
+    t.boolean "blocked", default: false
+    t.datetime "blocked_at"
+    t.string "locale", default: "en"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["token"], name: "index_users_on_token", unique: true
@@ -112,9 +125,8 @@ ActiveRecord::Schema.define(version: 2018_07_29_213243) do
   add_foreign_key "challenge_users", "challenges"
   add_foreign_key "challenge_users", "users"
   add_foreign_key "challenges", "challengelevels"
-  add_foreign_key "complaint_users", "complaints"
-  add_foreign_key "complaint_users", "users"
-  add_foreign_key "complaintfiles", "complaint_users"
+  add_foreign_key "complaintfiles", "complaints"
+  add_foreign_key "complaintfiles", "users"
   add_foreign_key "course_users", "courses"
   add_foreign_key "course_users", "users"
 end

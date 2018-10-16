@@ -1,14 +1,42 @@
-<p id="notice"><%= notice %></p>
+</br>
+</br>
+</br>
+<div class="card">
+  <div class="container-fliud">
+    <div class="wrapper row">
+      <div class="preview col-md-6">
 
-<p>
-  <strong>Nivel Reto:</strong>
-  <%= @challenge.challengelevel_id %>
-</p>
+        <div class="preview-pic tab-content">
+          <% @challenge.attachments.each_with_index do |attachment, index| %>
+            <div class="tab-pane <%= index == 0 ? 'active' : '' %>" id="pic-<%=attachment.id%>">
+              <% if ['PNG', 'png', 'jpg', 'JPG', 'jepg', 'JEPG'].include?(attachment.file.url.split('.').last) %>
+                <%= image_tag(attachment.file.url) %>
+              <% elsif ['mp4'].include?(attachment.file.url.split('.').last) %>
+                <%= video_tag attachment.file.url, size: '500x500', controls: true %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
 
-<p>
-  <strong>Descripción:</strong>
-  <%= @challenge.descripcion %>
-</p>
+        <ul class="preview-thumbnail nav nav-tabs">
+          <% @challenge.attachments.each_with_index do |attachment, index| %>
+            <li class="<%= index == 0 ? 'active' : '' %>">
+              <a data-target="#pic-<%= attachment.id %>" data-toggle="tab">
+                <% if ['PNG', 'png', 'jpg', 'JPG', 'jepg', 'JEPG'].include?(attachment.file.url.split('.').last) %>
+                  <%= image_tag(attachment.file.url) %>
+                <% elsif ['mp4'].include?(attachment.file.url.split('.').last) %>
+                  Video
+                <% end %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
 
-<%= link_to 'Editar', edit_challenge_path(@challenge) %> |
-<%= link_to 'Regresar', challenges_path %>
+      </div>
+      <div class="details col-md-6">
+        <h6 class="sizes"><%= t(:challenge_level) %>: <%= @challenge.challengelevel.descripcion %></h6>
+        <h6 class="sizes"><%= t(:description) %>: <%= @challenge.descripcion %></h6>
+      </div>
+    </div>
+  </div>
+</div>
