@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello Admin,</h1>
+    <p>
+      Please unblock my account, my email id is <%= @user.email %>.<br>
+      Click <a href="<%= unblock_me_user_url(@user) %>"> here</a> to unblock account.
+    </p>
+    <p>Thanks!</p>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :unblock_resuest, :unblock, :unblock_me]
 
   # GET /users
   # GET /users.json
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: t(:user_update_succ) }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -58,6 +58,21 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def unblock
+    UserMailer.unblock_request_to_admins(@user.id).deliver!
+    redirect_to root_path, notice: t(:email_send_to_admin)
+  end
+
+  def unblock_me
+    respond_to do |format|
+      if @user.update(blocked: false, blocked_at: nil)
+        format.html { redirect_to root_path, notice: t(:account_succ_unblock) }
+      else
+        format.html { redirect_to :back, notice: @user.errors.to_a.to_sentence }
+      end
     end
   end
 
