@@ -4,7 +4,7 @@ RailsAdmin.config do |config|
 
   ## == Devise ==
   config.authenticate_with do
-    I18n.locale = current_user.locale || I18n.default_locale
+    I18n.locale = current_user.locale || I18n.default_locale if current_user
     warden.authenticate! scope: :user
   end
   config.current_user_method(&:current_user)

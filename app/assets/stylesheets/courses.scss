@@ -32,7 +32,9 @@ img {
     margin-right: 2.5%; }
     .preview-thumbnail.nav-tabs li img {
       max-width: 100%;
-      display: block; }
+      display: block;
+      height: 100px;
+      }
     .preview-thumbnail.nav-tabs li a {
       padding: 0;
       margin: 0; }
