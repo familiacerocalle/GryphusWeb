@@ -1,47 +1,30 @@
-</br>
-</br>
-</br>
-<div class="card">
-  <div class="container-fliud">
-    <div class="wrapper row">
-      <div class="preview col-md-6">
-
-        <div class="preview-pic tab-content">
-          <% @complaint.attachments.each_with_index do |attachment, index| %>
-            <div class="tab-pane <%= index == 0 ? 'active' : '' %>" id="pic-<%=attachment.id%>">
-              <% if ['PNG', 'png', 'jpg', 'JPG', 'jepg', 'JEPG'].include?(attachment.file.url.split('.').last) %>
-                <%= image_tag(attachment.file.url) %>
-              <% elsif ['mp4'].include?(attachment.file.url.split('.').last) %>
-                <%= video_tag attachment.file.url, size: '500x500', controls: true %>
-              <% end %>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div id="postlist">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="text-center">
+            <div class="row">
+              <div class="col-sm-9">
+                <h3 class="pull-left"><%= @complaint.complaint_type.name %></h3>
+              </div>
             </div>
-          <% end %>
+          </div>
         </div>
 
-        <ul class="preview-thumbnail nav nav-tabs">
-          <% @complaint.attachments.each_with_index do |attachment, index| %>
-            <li class="<%= index == 0 ? 'active' : '' %>">
-              <a data-target="#pic-<%= attachment.id %>" data-toggle="tab">
-                <% if ['PNG', 'png', 'jpg', 'JPG', 'jepg', 'JEPG'].include?(attachment.file.url.split('.').last) %>
-                  <%= image_tag(attachment.file.url) %>
-                <% elsif ['mp4'].include?(attachment.file.url.split('.').last) %>
-                  <%= image_tag('video.jpeg') %>
-                <% end %>
-              </a>
-            </li>
-          <% end %>
-        </ul>
+        <div class="panel-body"><%= @complaint.descripcion %></div>
 
-      </div>
-      <div class="details col-md-6">
-        <h6 class="sizes"><%= t(:description) %>: <%= @complaint.descripcion %></h6>
-        <h6 class="sizes"><%= t(:complaint_type) %>: <%= @complaint.complaint_type.name %></h6>
+        <%= render partial: 'shared/show', locals: { header: 'Attachments', attachments: @complaint.attachments } %>
       </div>
     </div>
   </div>
+  <div class="col-md-1"></div>
 </div>
 
+
 <div class="row">
+  <div class="col-md-1"></div>
   <div class="col-md-8">
     <h2 class="page-header"><%= t(:complaint_files) %></h2>
       <section class="comment-list">
@@ -49,7 +32,11 @@
           <article class="row">
             <div class="col-md-2 col-sm-2 hidden-xs">
               <figure class="thumbnail">
-                <%= image_tag file.archivo.url, class: "img-responsive" %>
+                <% if ['PNG', 'png', 'jpg', 'JPG', 'jepg', 'JEPG'].include?(file.archivo.url.split('.').last) %>
+                  <%= image_tag(file.archivo.url, class: "img-responsive")  %>
+                <% elsif ['mp4'].include?(file.archivo.url.split('.').last) %>
+                  <%= video_tag file.archivo.url, size: "100x80", controls: true %>
+                <% end %>
                 <figcaption class="text-center"><%= file.user.nombre %></figcaption>
               </figure>
             </div>
@@ -68,7 +55,8 @@
         <% end %>
       </section>
   </div>
+  <div class="col-md-1"></div>
 </div>
 
 <%= link_to t(:add_complaint_file), new_complaintfile_path(:complaint_id => @complaint.id) %>
-<%= link_to t(:back), root_path %>
+<%= link_to t(:back), :back %>

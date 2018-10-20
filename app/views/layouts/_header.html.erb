@@ -1,4 +1,4 @@
-<nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
+<nav class="navbar header-top navbar-expand-lg  navbar-dark bg-dark">
   <%= link_to t(:logo), root_path, class: "navbar-brand" %>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav ml-md-auto d-md-flex">
@@ -26,8 +26,8 @@
           <%= link_to t(:home), root_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-        </li>
           <%= link_to t(:sign_up), new_user_registration_path, class: "nav-link" %>
+        </li>
         <li class="nav-item">
           <%= link_to t(:login), new_user_session_path, class: "nav-link" %>
         </li>

@@ -7,7 +7,7 @@
       </br>
       <%= form_for(@complaintfile, html: { id: 'Login', multipart: true }) do |f| %>
         <div class="form-group">
-          <%= f.text_field :descripcion, autofocus: true, autocomplete: "descripcion", placeholder: t(:description), class: "form-control", id: "inputEmail" %>
+          <%= f.text_area :descripcion, autofocus: true, autocomplete: "descripcion", placeholder: t(:description), class: "form-control", id: "inputEmail", style: 'height: 100px' %>
         </div>
         <div class="form-group">
           <%= f.file_field :archivo %>
