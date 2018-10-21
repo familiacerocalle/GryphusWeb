@@ -3,7 +3,7 @@ class CreateComplaintfiles < ActiveRecord::Migration[5.2]
     create_table :complaintfiles do |t|
       t.references :complaint, foreign_key: true
       t.references :user, foreign_key: true
-      t.string :descripcion
+      t.text :descripcion
       t.string :archivo
 
       t.timestamps

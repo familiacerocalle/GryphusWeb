@@ -1,0 +1,20 @@
+<div class="panel">
+  <div class="panel-heading">
+    <div class="text-center">
+      <div class="row">
+        <div class="col-sm-9">
+          <h3 class="pull-left"><%= header %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <% attachments.each do |attachment| %>
+      <% if ['PNG', 'png', 'jpg', 'JPG', 'jepg', 'JEPG'].include?(attachment.file.url.split('.').last) %>
+        <%= image_tag(attachment.file.url, style: 'width: 700px')  %>
+      <% elsif ['mp4'].include?(attachment.file.url.split('.').last) %>
+        <%= video_tag attachment.file.url, controls: true, style: 'width: 700px' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

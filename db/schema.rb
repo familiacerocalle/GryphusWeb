@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2018_10_16_151505) do
 
   create_table "challenges", force: :cascade do |t|
     t.bigint "challengelevel_id"
-    t.string "descripcion"
+    t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["challengelevel_id"], name: "index_challenges_on_challengelevel_id"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2018_10_16_151505) do
   end
 
   create_table "complaints", force: :cascade do |t|
-    t.string "descripcion"
+    t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2018_10_16_151505) do
 
   create_table "courses", force: :cascade do |t|
     t.string "nombre"
-    t.string "contenido"
+    t.text "contenido"
     t.integer "puntos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
