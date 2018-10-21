@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
-  include ActionController::HttpAuthentication::Token::ControllerMethods
 
   protected
 
@@ -18,12 +17,6 @@ class ApplicationController < ActionController::Base
         session[:locale] = params[:locale]
       end
       I18n.locale = session[:locale] || I18n.default_locale
-    end
-
-    def custom_authenticate_user!
-      authenticate_or_request_with_http_token do |token, options|
-        @current_user = User.find_by(token: token)
-      end
     end
 
 end

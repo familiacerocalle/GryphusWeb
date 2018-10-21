@@ -2,7 +2,7 @@ module Api
   module V1
     class ChallengeUsersController < ActionController::API
       before_action :custom_authenticate_user!
-
+      include ActionController::HttpAuthentication::Token::ControllerMethods
       include ChallengeUsersHelper
 
       def show_disp
@@ -29,6 +29,12 @@ module Api
         finalizar
         render json: {challengeUser: @inscripcion}, status: :ok
       end
+
+        def custom_authenticate_user!
+          authenticate_or_request_with_http_token do |token, options|
+            @current_user = User.find_by(token: token)
+          end
+        end
 
     end
   end

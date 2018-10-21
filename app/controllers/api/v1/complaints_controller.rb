@@ -3,6 +3,7 @@ module Api
     class ComplaintsController < ActionController::API
       before_action :custom_authenticate_user!
       before_action :set_complaint, only: [:show, :update]
+      include ActionController::HttpAuthentication::Token::ControllerMethods
 
       def index
         @complaints = @current_user.complaints
@@ -49,6 +50,13 @@ module Api
         def complaint_params
           params.require(:complaint).permit(:descripcion, :complaint_type_id, :user_id, attachments_attributes: [:file])
         end
+
+        def custom_authenticate_user!
+          authenticate_or_request_with_http_token do |token, options|
+            @current_user = User.find_by(token: token)
+          end
+        end
+
     end
   end
 end

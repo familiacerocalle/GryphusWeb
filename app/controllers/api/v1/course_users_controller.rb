@@ -4,6 +4,7 @@ module Api
       before_action :custom_authenticate_user!
 
       include CourseUsersHelper
+      include ActionController::HttpAuthentication::Token::ControllerMethods
 
       # Lista de cursos disponibles para un usuario (los cursos a los que no está asociado)
       def show_disp
@@ -32,6 +33,13 @@ module Api
         finalizar
         render json: {courseuser: @inscripcion}, status: :ok
       end
+
+        def custom_authenticate_user!
+          authenticate_or_request_with_http_token do |token, options|
+            @current_user = User.find_by(token: token)
+          end
+        end
+
     end
   end
 end

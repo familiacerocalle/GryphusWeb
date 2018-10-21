@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def logout
-    update(authentication_token: nil)
+    update(token: nil)
   end
 
   private

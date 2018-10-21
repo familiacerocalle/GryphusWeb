@@ -3,6 +3,7 @@ module Api
     class UsersController < ActionController::API
 
       before_action :custom_authenticate_user!, only: [:sign_out, :update]
+      include ActionController::HttpAuthentication::Token::ControllerMethods
 
       def signup
         # Crea un usuario y devuelve sus datos
@@ -28,10 +29,10 @@ module Api
       end
 
       def update
-        if @current_user.update(user_params).save
-          render json: @user, status: :ok
+        if @current_user.update(user_params)
+          render json: @current_user, status: :ok
         else
-          render json: @user.errors, status: :unprocessable_entity
+          render json: @current_user.errors, status: :unprocessable_entity
         end
       end
 
@@ -48,6 +49,13 @@ module Api
         def user_params
           params.require(:user).permit(:email, :password, :nombre, :primerApellido, :segundoApellido, :puntosAcumulados)
         end
+
+        def custom_authenticate_user!
+          authenticate_or_request_with_http_token do |token, options|
+            @current_user = User.find_by(token: token)
+          end
+        end
+
     end
   end
 end
