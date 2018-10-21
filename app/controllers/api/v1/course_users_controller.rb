@@ -9,7 +9,7 @@ module Api
       # Lista de cursos disponibles para un usuario (los cursos a los que no está asociado)
       def show_disp
         @courses = Course.where(["id NOT IN (SELECT course_id FROM course_users WHERE user_id = ?)", @current_user.id])
-        render json: {cursos: @courses}, status: :ok
+        render json: @courses, status: :ok
       end
 
       def show
@@ -20,23 +20,23 @@ module Api
       # Lista de cursos actuales (los cursos a los que está asociado y no ha terminado)
       def show_act
         @courseusers = CourseUser.where(["user_id = ? AND fechaFin IS NULL", @current_user.id]).order("created_at DESC")
-        render json: {cursos: @courseusers.as_json(include: [:course])}
+        render json: @courseusers.as_json(include: [:course])
       end
 
       # Lista de cursos finalizados (los cursos a los que está asociado y ya terminó)
       def show_hist
         @courseusers = CourseUser.where(["user_id = ? AND fechaFin IS NOT NULL", @current_user.id]).order("created_at DESC")
-        render json: {cursos: @courseusers.as_json(include: [:course])}
+        render json: @courseusers.as_json(include: [:course])
       end
 
       def inscribircurso
         enroll('api')
-        render json: {courseuser: @inscripcion}, status: :ok
+        render json: @inscripcion, status: :ok
       end
 
       def finalizarcurso
         finalizar('api')
-        render json: {courseuser: @inscripcion}, status: :ok
+        render json: @inscripcion, status: :ok
       end
 
       private

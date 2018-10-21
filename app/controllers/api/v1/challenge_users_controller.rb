@@ -7,12 +7,12 @@ module Api
 
       def show_disp
         @challengesdisp = Challenge.where(["id NOT IN (SELECT challenge_id FROM challenge_users WHERE user_id = ?)", @current_user.id])
-        render json: {retos: @challengesdisp}, status: :ok
+        render json: @challengesdisp, status: :ok
       end
 
       def show_act
         @challengeusers = ChallengeUser.where(["user_id = ? AND fechaFin IS NULL", @current_user.id]).order("created_at DESC")
-        render json: {retos: @challengeusers.as_json(include: [:challenge])}
+        render json: @challengeusers.as_json(include: [:challenge])
       end
 
       def show
@@ -22,19 +22,20 @@ module Api
 
       def show_hist
         @challengeusers = ChallengeUser.where(["user_id = ? AND fechaFin IS NOT NULL", @current_user.id]).order("created_at DESC")
-        render json: {retos: @challengeusers.as_json(include: [:challenge])}
+        render json: @challengeusers.as_json(include: [:challenge])
       end
 
       def inscribirreto
         enroll('api')
-        render json: {challengeUser: @inscripcion}, status: :ok
+        render json: @inscripcion, status: :ok
       end
 
       def finalizarreto
         finalizar('api')
-        render json: {challengeUser: @inscripcion}, status: :ok
+        render json: @inscripcion, status: :ok
       end
 
+      private
         def custom_authenticate_user!
           authenticate_or_request_with_http_token do |token, options|
             @current_user = User.find_by(token: token)

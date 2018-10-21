@@ -11,12 +11,12 @@ module Api
       end
 
       def complaint_types
-        @complaint_types = ComplaintType.pluck(:name, :id)
+        @complaint_types = ComplaintType.all
         render json: @complaint_types, status: :ok
       end
 
       def show
-        render json: {quejas: @complaint.as_json(include: [:attachments, :complaintfiles])}, status: :ok
+        render json: @complaint.as_json(include: [:attachments, :complaintfiles]), status: :ok
       end
 
       def create
