@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :apisessions
       resources :apicourses
-      resources :users
+      resources :users, only: [:update]
       get 'course_users/show_disp'
       get 'course_users/show_act'
       get 'course_users/show_hist'
@@ -63,14 +63,15 @@ Rails.application.routes.draw do
       post 'course_users/finalizarcurso'
       post 'users/signup'
       post 'users/signin'
+      delete 'users/sign_out'
       get 'challenge_users/show_disp'
       get 'challenge_users/show_act'
       get 'challenge_users/show_hist'
       post 'challenge_users/inscribirreto'
       post 'challenge_users/finalizarreto'
-      resources :complaint_users
-      get 'complaint_users/show_hist'
-      resources :complaintfiles
+      resources :complaints, only: [:index, :create, :show]
+      get 'complaints/complaint_types'
+      resources :complaintfiles, only: [:create, :update]
     end
   end
 end
