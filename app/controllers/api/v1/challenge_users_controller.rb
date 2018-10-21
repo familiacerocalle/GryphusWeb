@@ -15,18 +15,23 @@ module Api
         render json: {retos: @challengeusers.as_json(include: [:challenge])}
       end
 
+      def show
+        @challenge = Challenge.find_by(id: params[:id])
+        render json: @challenge.as_json(include: [:attachments]), status: :ok
+      end
+
       def show_hist
         @challengeusers = ChallengeUser.where(["user_id = ? AND fechaFin IS NOT NULL", @current_user.id]).order("created_at DESC")
         render json: {retos: @challengeusers.as_json(include: [:challenge])}
       end
 
       def inscribirreto
-        enroll
+        enroll('api')
         render json: {challengeUser: @inscripcion}, status: :ok
       end
 
       def finalizarreto
-        finalizar
+        finalizar('api')
         render json: {challengeUser: @inscripcion}, status: :ok
       end
 

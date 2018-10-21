@@ -12,6 +12,11 @@ module Api
         render json: {cursos: @courses}, status: :ok
       end
 
+      def show
+        @course = Course.find_by(id: params[:id])
+        render json: @course.as_json(include: [:attachments]), status: :ok
+      end
+
       # Lista de cursos actuales (los cursos a los que está asociado y no ha terminado)
       def show_act
         @courseusers = CourseUser.where(["user_id = ? AND fechaFin IS NULL", @current_user.id]).order("created_at DESC")
@@ -25,14 +30,16 @@ module Api
       end
 
       def inscribircurso
-        enroll
+        enroll('api')
         render json: {courseuser: @inscripcion}, status: :ok
       end
 
       def finalizarcurso
-        finalizar
+        finalizar('api')
         render json: {courseuser: @inscripcion}, status: :ok
       end
+
+      private
 
         def custom_authenticate_user!
           authenticate_or_request_with_http_token do |token, options|

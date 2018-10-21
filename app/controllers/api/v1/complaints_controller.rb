@@ -16,7 +16,7 @@ module Api
       end
 
       def show
-        render json: {quejas: @complaint.as_json(include: [:attachments, :complaint_files])}, status: :ok
+        render json: {quejas: @complaint.as_json(include: [:attachments, :complaintfiles])}, status: :ok
       end
 
       def create
@@ -24,7 +24,7 @@ module Api
         @complaint.attachments.build(file: params[:files]) if params[:files]
 
         if @complaint.save
-          render json: @complaint.as_json(include: [:attachments, :complaint_files]), status: :created
+          render json: @complaint.as_json(include: [:attachments, :complaintfiles]), status: :created
         else
           render json: @complaint.errors, status: :unprocessable_entity
         end
@@ -34,8 +34,8 @@ module Api
         if params[:files]
           @complaint.attachments = [Attachment.new(file: params[:files])]
         end
-        if @complaint.update(complaint_user_params)
-          render json: @complaint.as_json(include: [:attachments, :complaint_files]), status: :ok
+        if @complaint.update(complaint_params)
+          render json: @complaint.as_json(include: [:attachments, :complaintfiles]), status: :ok
         else
           render json: @complaint.errors, status: :unprocessable_entity
         end
@@ -48,7 +48,7 @@ module Api
         end
 
         def complaint_params
-          params.require(:complaint).permit(:descripcion, :complaint_type_id, :user_id, attachments_attributes: [:file])
+          params.require(:complaint).permit(:descripcion, :complaint_type_id, :user_id)
         end
 
         def custom_authenticate_user!
