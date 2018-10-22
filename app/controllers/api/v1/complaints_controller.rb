@@ -32,7 +32,7 @@ module Api
 
       def update
         if params[:files]
-          @complaint.attachments = [Attachment.new(file: params[:files])]
+          @complaint.attachments = [Attachment.new(file: decode_base64_image(params[:files]))]
         end
         if @complaint.update(complaint_params)
           render json: @complaint.as_json(include: [:attachments, :complaintfiles]), status: :ok
@@ -64,6 +64,16 @@ module Api
             @current_user = User.find_by(token: token)
           end
         end
+
+        def decode_base64_image(encoded_file)
+          decoded_file = Base64.decode64(encoded_file)
+          file = Tempfile.new(['image','.jpg'])
+          file.binmode
+          file.write decoded_file
+
+          return file
+        end
+
 
     end
   end
