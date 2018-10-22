@@ -2,7 +2,7 @@ module Api
   module V1
     class ComplaintfilesController < ActionController::API
       before_action :custom_authenticate_user!
-      before_action :set_complaint_file, only: [:update]
+      before_action :set_complaint_file, only: [:update, :destroy]
       include ActionController::HttpAuthentication::Token::ControllerMethods
 
       def create
@@ -18,6 +18,14 @@ module Api
       def update
         if @complaintfile.update(complaintfile_params)
           render json: @complaintfile, status: :ok
+        else
+          render json: @complaintfile.errors, status: :unprocessable_entity
+        end
+      end
+
+      def destroy
+        if @complaintfile.destroy
+          render json: nil, status: :ok
         else
           render json: @complaintfile.errors, status: :unprocessable_entity
         end

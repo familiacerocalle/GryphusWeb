@@ -72,8 +72,8 @@ Rails.application.routes.draw do
       post 'challenge_users/inscribirreto'
       post 'challenge_users/finalizarreto'
       get 'complaints/complaint_types'
-      resources :complaints, only: [:index, :create, :show, :update]
-      resources :complaintfiles, only: [:create, :update]
+      resources :complaints, only: [:index, :create, :show, :update, :destroy]
+      resources :complaintfiles, only: [:create, :update, :destroy]
     end
   end
 end

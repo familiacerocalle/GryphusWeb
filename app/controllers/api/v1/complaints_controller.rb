@@ -2,7 +2,7 @@ module Api
   module V1
     class ComplaintsController < ActionController::API
       before_action :custom_authenticate_user!
-      before_action :set_complaint, only: [:show, :update]
+      before_action :set_complaint, only: [:show, :update, :destroy]
       include ActionController::HttpAuthentication::Token::ControllerMethods
 
       def index
@@ -36,6 +36,14 @@ module Api
         end
         if @complaint.update(complaint_params)
           render json: @complaint.as_json(include: [:attachments, :complaintfiles]), status: :ok
+        else
+          render json: @complaint.errors, status: :unprocessable_entity
+        end
+      end
+
+      def destroy
+        if @complaint.destroy
+          render json: nil, status: :ok
         else
           render json: @complaint.errors, status: :unprocessable_entity
         end
