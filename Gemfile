@@ -61,6 +61,8 @@ gem 'devise'
 
 gem 'carrierwave'
 
+gem 'carrierwave-base64'
+
 gem 'rack-cors', require: 'rack/cors'
 
 gem 'rails_12factor', group: :production
