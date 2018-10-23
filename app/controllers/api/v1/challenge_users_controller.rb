@@ -18,7 +18,8 @@ module Api
       def show
         @challenge = Challenge.find_by(id: params[:id])
         @challenge_user = ChallengeUser.where(user_id: @current_user.id, challenge_id: @challenge.id).last
-        render json: @challenge.as_json(include: [:attachments]).merge(challenge_user: @challenge_user), status: :ok
+        challengelevel = @challenge.challengelevel.descripcion
+        render json: @challenge.as_json(include: [:attachments]).merge({challenge_user: @challenge_user, challengelevel: challengelevel}), status: :ok
       end
 
       def show_hist
