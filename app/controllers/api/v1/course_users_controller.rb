@@ -14,7 +14,8 @@ module Api
 
       def show
         @course = Course.find_by(id: params[:id])
-        render json: @course.as_json(include: [:attachments]), status: :ok
+        @course_user = CourseUser.where(user_id: @current_user.id, course_id: @course.id).last
+        render json: @course.as_json(include: [:attachments]).merge(course_user: @course_user), status: :ok
       end
 
       # Lista de cursos actuales (los cursos a los que está asociado y no ha terminado)
