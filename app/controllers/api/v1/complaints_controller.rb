@@ -6,7 +6,7 @@ module Api
       include ActionController::HttpAuthentication::Token::ControllerMethods
 
       def index
-        @complaints = @current_user.complaints
+        @complaints = @current_user.complaints.as_json(include: [:attachments, :complaintfiles])
         render json: @complaints, status: :ok
       end
 
