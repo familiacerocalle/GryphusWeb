@@ -47,7 +47,7 @@ module Api
       private
 
         def user_params
-          params.require(:user).permit(:email, :password, :nombre, :primerApellido, :segundoApellido, :puntosAcumulados)
+          params.require(:user).permit(:email, :password, :nombre, :primerApellido, :segundoApellido, :puntosAcumulados, :locale)
         end
 
         def custom_authenticate_user!
