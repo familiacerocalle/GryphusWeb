@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
 
-
   protected
 
     def configure_permitted_parameters
@@ -19,4 +18,5 @@ class ApplicationController < ActionController::Base
       end
       I18n.locale = session[:locale] || I18n.default_locale
     end
+
 end

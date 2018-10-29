@@ -44,4 +44,12 @@ class FileUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  def asset_host
+    if Rails.env.development? || Rails.env.test?
+      return 'http://localhost:3000'
+    else
+      return 'https://gryphus-web-dev.herokuapp.com'
+    end
+  end
 end
