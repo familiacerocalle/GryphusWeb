@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  ADMIN_EMAIL = %(dilkhushsoni2010@gmail.com)
+  ADMIN_EMAIL = %(x@x.com)
 
   # Relaciones entre las tablas
   has_many :course_users
