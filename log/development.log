@@ -51265,3 +51265,305 @@ Completed 200 OK in 41ms (Views: 39.1ms | ActiveRecord: 0.0ms)
 >>>>>>> d4ff55f9042dc7d2f52b4bde82eba8986eb27ef8
 
 
+Started GET "/" for 127.0.0.1 at 2018-10-17 06:22:23 -0500
+  [1m[35m (32.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_index.html.erb (1.0ms)
+  Rendered home/index.html.erb within layouts/application (58.0ms)
+  Rendered layouts/_header.html.erb (3.0ms)
+Completed 200 OK in 41407ms (Views: 41202.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/?locale=es" for 127.0.0.1 at 2018-10-17 06:23:14 -0500
+Processing by HomeController#index as HTML
+  Parameters: {"locale"=>"es"}
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_index.html.erb (1.0ms)
+  Rendered home/index.html.erb within layouts/application (49.0ms)
+  Rendered layouts/_header.html.erb (4.0ms)
+Completed 200 OK in 746ms (Views: 701.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/?locale=en" for 127.0.0.1 at 2018-10-17 06:23:16 -0500
+Processing by HomeController#index as HTML
+  Parameters: {"locale"=>"en"}
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_index.html.erb (2.0ms)
+  Rendered home/index.html.erb within layouts/application (34.0ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+Completed 200 OK in 624ms (Views: 593.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-10-17 06:23:24 -0500
+Processing by SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (68.0ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+Completed 200 OK in 1366ms (Views: 1233.2ms | ActiveRecord: 87.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-10-17 06:23:36 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+Completed 200 OK in 779ms (Views: 777.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-10-17 06:23:46 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eGS1Fs8oOvY2xN6BhyqNT0vuNc5BvSUCpY98h0H5T4q+uTudG3W3pHq5/SaOaY4SDf36HA4J0WnLNa3d9Rqp6w==", "user"=>{"email"=>"x@x.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (60.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "x@x.com"], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (19.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_header.html.erb (4.0ms)
+Completed 200 OK in 1678ms (Views: 776.1ms | ActiveRecord: 80.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-10-17 06:24:00 -0500
+Processing by SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+Completed 200 OK in 994ms (Views: 992.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-10-17 06:24:10 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mo2Y9L0NX5aG5JxXYJ8g4QKnv6kCTnTohXJ1iNmD1rAvwCR1mJZQV2BPQvUmqMS1ReKDxi3SkA/9pbbgBHOcGQ==", "user"=>{"email"=>"x@x.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "x@x.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/application_controller.rb:15
+  [1m[36mUser Update (45.0ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2018-10-17 11:24:11.487020"], ["last_sign_in_at", "2018-10-17 03:53:39.460945"], ["sign_in_count", 4], ["updated_at", "2018-10-17 11:24:11.488021"], ["id", 1]]
+  ↳ app/controllers/application_controller.rb:15
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/application_controller.rb:15
+Redirected to http://localhost:3000/
+Completed 302 Found in 1289ms (ActiveRecord: 47.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-17 06:24:12 -0500
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#dashboard as HTML
+  Rendering home/dashboard.html.erb within layouts/application
+  [1m[36mCourse Load (78.0ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE (id NOT IN (SELECT course_id FROM course_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:21
+  [1m[36mComplaint Load (24.0ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/home/dashboard.html.erb:54
+  [1m[36mChallenge Load (73.0ms)[0m  [1m[34mSELECT "challenges".* FROM "challenges" WHERE (id NOT IN (SELECT challenge_id FROM challenge_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:91
+  Rendered home/dashboard.html.erb within layouts/application (247.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 1041ms (Views: 682.4ms | ActiveRecord: 188.0ms)
+
+
+Started GET "/courses/1" for 127.0.0.1 at 2018-10-17 06:24:21 -0500
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15
+  [1m[36mCourse Load (0.0ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:67
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mAttachment Load (54.0ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."entity_id" = $1 AND "attachments"."entity_type" = $2[0m  [["entity_id", 1], ["entity_type", "Course"]]
+  ↳ app/views/courses/show.html.erb:10
+  Rendered courses/show.html.erb within layouts/application (132.0ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+Completed 200 OK in 910ms (Views: 801.0ms | ActiveRecord: 61.0ms)
+
+
+Started GET "/uploads/attachment/file/1/slider-bg-1_10.jpg" for 127.0.0.1 at 2018-10-17 06:24:23 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/attachment/file/1/slider-bg-1_10.jpg"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/uploads/attachment/file/2/Video.mp4" for 127.0.0.1 at 2018-10-17 06:24:24 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/attachment/file/2/Video.mp4"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-10-17 06:24:59 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"gPxNQ6U2ZzmN6jXo0dIomqe6alFML09GQdT2+XSS1K9jfvxnVEA1ITwsMwMoPX7zicstkPtgXTT0WDMe5ky4Lw=="}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 743ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-17 06:25:00 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_index.html.erb (2.0ms)
+  Rendered home/index.html.erb within layouts/application (32.0ms)
+  Rendered layouts/_header.html.erb (3.0ms)
+Completed 200 OK in 561ms (Views: 530.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-17 10:03:43 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#dashboard as HTML
+  Rendering home/dashboard.html.erb within layouts/application
+  [1m[36mCourse Load (2.0ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE (id NOT IN (SELECT course_id FROM course_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:21
+  [1m[36mComplaint Load (1.0ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/home/dashboard.html.erb:54
+  [1m[36mChallenge Load (3.0ms)[0m  [1m[34mSELECT "challenges".* FROM "challenges" WHERE (id NOT IN (SELECT challenge_id FROM challenge_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:91
+  Rendered home/dashboard.html.erb within layouts/application (40.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 2167ms (Views: 2049.4ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-17 10:03:46 -0500
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#dashboard as HTML
+  Rendering home/dashboard.html.erb within layouts/application
+  [1m[36mCourse Load (1.0ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE (id NOT IN (SELECT course_id FROM course_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:21
+  [1m[36mComplaint Load (0.0ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/home/dashboard.html.erb:54
+  [1m[36mChallenge Load (0.0ms)[0m  [1m[34mSELECT "challenges".* FROM "challenges" WHERE (id NOT IN (SELECT challenge_id FROM challenge_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:91
+  Rendered home/dashboard.html.erb within layouts/application (9.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 625ms (Views: 583.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/courses/2" for 127.0.0.1 at 2018-10-17 10:04:02 -0500
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15
+  [1m[36mCourse Load (0.0ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:67
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mAttachment Load (1.0ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."entity_id" = $1 AND "attachments"."entity_type" = $2[0m  [["entity_id", 2], ["entity_type", "Course"]]
+  ↳ app/views/courses/show.html.erb:10
+  Rendered courses/show.html.erb within layouts/application (25.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 592ms (Views: 543.4ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/uploads/attachment/file/3/Video2.mp4" for 127.0.0.1 at 2018-10-17 10:04:03 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/attachment/file/3/Video2.mp4"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-10-17 10:04:28 -0500
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#dashboard as HTML
+  Rendering home/dashboard.html.erb within layouts/application
+  [1m[36mCourse Load (1.0ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE (id NOT IN (SELECT course_id FROM course_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:21
+  [1m[36mComplaint Load (1.0ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/home/dashboard.html.erb:54
+  [1m[36mChallenge Load (0.0ms)[0m  [1m[34mSELECT "challenges".* FROM "challenges" WHERE (id NOT IN (SELECT challenge_id FROM challenge_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:91
+  Rendered home/dashboard.html.erb within layouts/application (8.0ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+Completed 200 OK in 590ms (Views: 551.1ms | ActiveRecord: 2.0ms)
+
+
