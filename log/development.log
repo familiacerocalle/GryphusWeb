@@ -51567,3 +51567,485 @@ Processing by HomeController#dashboard as HTML
 Completed 200 OK in 590ms (Views: 551.1ms | ActiveRecord: 2.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-10-29 12:17:44 -0500
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#dashboard as HTML
+  Rendering home/dashboard.html.erb within layouts/application
+  [1m[36mCourse Load (3.0ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE (id NOT IN (SELECT course_id FROM course_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:21
+  [1m[36mComplaint Load (2.0ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/home/dashboard.html.erb:54
+  [1m[36mComplaintType Load (1.0ms)[0m  [1m[34mSELECT  "complaint_types".* FROM "complaint_types" WHERE "complaint_types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/dashboard.html.erb:59
+  [1m[36mCACHE ComplaintType Load (0.0ms)[0m  [1m[34mSELECT  "complaint_types".* FROM "complaint_types" WHERE "complaint_types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/dashboard.html.erb:59
+  [1m[36mChallenge Load (3.0ms)[0m  [1m[34mSELECT "challenges".* FROM "challenges" WHERE (id NOT IN (SELECT challenge_id FROM challenge_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:91
+  Rendered home/dashboard.html.erb within layouts/application (88.0ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+Completed 200 OK in 33539ms (Views: 33326.2ms | ActiveRecord: 30.0ms)
+
+
+Started GET "/course_users/show_act" for 127.0.0.1 at 2018-10-29 12:18:28 -0500
+Processing by CourseUsersController#show_act as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14
+  Rendering course_users/show_act.html.erb within layouts/application
+  [1m[36mCourseUser Load (3.0ms)[0m  [1m[34mSELECT "course_users".* FROM "course_users" WHERE (user_id = 1 AND fechaFin IS NULL) ORDER BY created_at DESC[0m
+  ↳ app/views/course_users/show_act.html.erb:24
+  [1m[36mCourse Load (1.0ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/course_users/show_act.html.erb:26
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/course_users/show_act.html.erb:28
+  Rendered course_users/show_act.html.erb within layouts/application (69.0ms)
+  Rendered layouts/_header.html.erb (3.0ms)
+Completed 200 OK in 785ms (Views: 678.4ms | ActiveRecord: 36.0ms)
+
+
+Started GET "/api/v1/complaints/complaint_types" for 127.0.0.1 at 2018-10-29 12:19:25 -0500
+Processing by Api::V1::ComplaintsController#complaint_types as HTML
+  Parameters: {"complaint"=>{}}
+  [1m[36mUser Load (70.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/complaints_controller.rb:64
+  [1m[36mComplaintType Load (1.0ms)[0m  [1m[34mSELECT "complaint_types".* FROM "complaint_types"[0m
+  ↳ app/controllers/api/v1/complaints_controller.rb:15
+Completed 200 OK in 80ms (Views: 3.9ms | ActiveRecord: 71.0ms)
+
+
+Started GET "/api/v1/complaints" for 127.0.0.1 at 2018-10-29 12:19:28 -0500
+Processing by Api::V1::ComplaintsController#index as HTML
+  Parameters: {"complaint"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/complaints_controller.rb:64
+  [1m[36mComplaint Load (2.0ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/api/v1/complaints_controller.rb:9
+  [1m[36mAttachment Load (49.0ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."entity_id" = $1 AND "attachments"."entity_type" = $2[0m  [["entity_id", 1], ["entity_type", "Complaint"]]
+  ↳ app/controllers/api/v1/complaints_controller.rb:9
+  [1m[36mComplaintfile Load (50.0ms)[0m  [1m[34mSELECT "complaintfiles".* FROM "complaintfiles" WHERE "complaintfiles"."complaint_id" = $1[0m  [["complaint_id", 1]]
+  ↳ app/controllers/api/v1/complaints_controller.rb:9
+  [1m[36mAttachment Load (1.0ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."entity_id" = $1 AND "attachments"."entity_type" = $2[0m  [["entity_id", 2], ["entity_type", "Complaint"]]
+  ↳ app/controllers/api/v1/complaints_controller.rb:9
+  [1m[36mComplaintfile Load (2.0ms)[0m  [1m[34mSELECT "complaintfiles".* FROM "complaintfiles" WHERE "complaintfiles"."complaint_id" = $1[0m  [["complaint_id", 2]]
+  ↳ app/controllers/api/v1/complaints_controller.rb:9
+Completed 200 OK in 182ms (Views: 5.8ms | ActiveRecord: 121.0ms)
+
+
+Started GET "/api/v1/course_users/show_disp" for 127.0.0.1 at 2018-10-29 12:19:34 -0500
+Processing by Api::V1::CourseUsersController#show_disp as HTML
+  Parameters: {"course_user"=>{}}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:47
+  [1m[36mCourse Load (1.0ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE (id NOT IN (SELECT course_id FROM course_users WHERE user_id = 1))[0m
+  ↳ app/controllers/api/v1/course_users_controller.rb:12
+Completed 200 OK in 6ms (Views: 2.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/course_users/show_act?id=1" for 127.0.0.1 at 2018-10-29 12:19:36 -0500
+Processing by Api::V1::CourseUsersController#show_act as HTML
+  Parameters: {"id"=>"1", "course_user"=>{}}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:47
+  [1m[36mCourseUser Load (1.0ms)[0m  [1m[34mSELECT "course_users".* FROM "course_users" WHERE (user_id = 1 AND fechaFin IS NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/course_users_controller.rb:24
+  [1m[36mCourse Load (1.0ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:24
+Completed 200 OK in 10ms (Views: 0.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/course_users/show_hist?id=1" for 127.0.0.1 at 2018-10-29 12:19:38 -0500
+Processing by Api::V1::CourseUsersController#show_hist as HTML
+  Parameters: {"id"=>"1", "course_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:47
+  [1m[36mCourseUser Load (0.0ms)[0m  [1m[34mSELECT "course_users".* FROM "course_users" WHERE (user_id = 1 AND fechaFin IS NOT NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/course_users_controller.rb:30
+  [1m[36mCourse Load (1.0ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:30
+Completed 200 OK in 9ms (Views: 1.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/course_users/show?id=2" for 127.0.0.1 at 2018-10-29 12:19:41 -0500
+Processing by Api::V1::CourseUsersController#show as HTML
+  Parameters: {"id"=>"2", "course_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:47
+  [1m[36mCourse Load (1.0ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:16
+  [1m[36mCourseUser Load (15.0ms)[0m  [1m[34mSELECT  "course_users".* FROM "course_users" WHERE "course_users"."user_id" = $1 AND "course_users"."course_id" = $2 ORDER BY "course_users"."id" DESC LIMIT $3[0m  [["user_id", 1], ["course_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:17
+  [1m[36mAttachment Load (11.0ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."entity_id" = $1 AND "attachments"."entity_type" = $2[0m  [["entity_id", 2], ["entity_type", "Course"]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:18
+Completed 200 OK in 89ms (Views: 3.1ms | ActiveRecord: 31.0ms)
+
+
+Started GET "/uploads/attachment/file/2/Video.mp4" for 127.0.0.1 at 2018-10-29 12:19:42 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/attachment/file/2/Video.mp4"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/api/v1/course_users/show_act?id=1" for 127.0.0.1 at 2018-10-29 12:19:52 -0500
+Processing by Api::V1::CourseUsersController#show_act as HTML
+  Parameters: {"id"=>"1", "course_user"=>{}}
+  [1m[36mUser Load (18.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:47
+  [1m[36mCourseUser Load (40.0ms)[0m  [1m[34mSELECT "course_users".* FROM "course_users" WHERE (user_id = 1 AND fechaFin IS NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/course_users_controller.rb:24
+  [1m[36mCourse Load (15.0ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:24
+Completed 200 OK in 1107ms (Views: 1.9ms | ActiveRecord: 73.0ms)
+
+
+Started GET "/api/v1/challenge_users/show_disp" for 127.0.0.1 at 2018-10-29 12:19:58 -0500
+Processing by Api::V1::ChallengeUsersController#show_disp as HTML
+  Parameters: {"challenge_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallenge Load (2.0ms)[0m  [1m[34mSELECT "challenges".* FROM "challenges" WHERE (id NOT IN (SELECT challenge_id FROM challenge_users WHERE user_id = 1))[0m
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:10
+Completed 200 OK in 8ms (Views: 3.2ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/api/v1/challenge_users/show_act?id=1" for 127.0.0.1 at 2018-10-29 12:20:03 -0500
+Processing by Api::V1::ChallengeUsersController#show_act as HTML
+  Parameters: {"id"=>"1", "challenge_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallengeUser Load (1.0ms)[0m  [1m[34mSELECT "challenge_users".* FROM "challenge_users" WHERE (user_id = 1 AND fechaFin IS NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:15
+  [1m[36mChallenge Load (29.0ms)[0m  [1m[34mSELECT  "challenges".* FROM "challenges" WHERE "challenges"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:15
+Completed 200 OK in 53ms (Views: 0.8ms | ActiveRecord: 34.0ms)
+
+
+Started GET "/api/v1/challenge_users/show_hist?id=1" for 127.0.0.1 at 2018-10-29 12:20:05 -0500
+Processing by Api::V1::ChallengeUsersController#show_hist as HTML
+  Parameters: {"id"=>"1", "challenge_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallengeUser Load (1.0ms)[0m  [1m[34mSELECT "challenge_users".* FROM "challenge_users" WHERE (user_id = 1 AND fechaFin IS NOT NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:27
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/challenge_users/show_act?id=1" for 127.0.0.1 at 2018-10-29 12:20:08 -0500
+Processing by Api::V1::ChallengeUsersController#show_act as HTML
+  Parameters: {"id"=>"1", "challenge_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallengeUser Load (1.0ms)[0m  [1m[34mSELECT "challenge_users".* FROM "challenge_users" WHERE (user_id = 1 AND fechaFin IS NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:15
+  [1m[36mChallenge Load (1.0ms)[0m  [1m[34mSELECT  "challenges".* FROM "challenges" WHERE "challenges"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:15
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/challenge_users/show_disp" for 127.0.0.1 at 2018-10-29 12:20:10 -0500
+Processing by Api::V1::ChallengeUsersController#show_disp as HTML
+  Parameters: {"challenge_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallenge Load (1.0ms)[0m  [1m[34mSELECT "challenges".* FROM "challenges" WHERE (id NOT IN (SELECT challenge_id FROM challenge_users WHERE user_id = 1))[0m
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:10
+Completed 200 OK in 7ms (Views: 2.3ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/api/v1/challenge_users/inscribirreto" for 127.0.0.1 at 2018-10-29 12:20:12 -0500
+Processing by Api::V1::ChallengeUsersController#inscribirreto as HTML
+  Parameters: {"challengeid"=>3, "userid"=>1, "challenge_user"=>{}}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/helpers/challenge_users_helper.rb:7
+  [1m[36mChallenge Load (1.0ms)[0m  [1m[34mSELECT  "challenges".* FROM "challenges" WHERE "challenges"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/challenge_users_helper.rb:7
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/challenge_users_helper.rb:7
+  [1m[36mChallengeUser Create (190.0ms)[0m  [1m[32mINSERT INTO "challenge_users" ("challenge_id", "user_id", "fechainicio", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["challenge_id", 3], ["user_id", 1], ["fechainicio", "2018-10-29 17:20:13.137196"], ["created_at", "2018-10-29 17:20:13.146196"], ["updated_at", "2018-10-29 17:20:13.146196"]]
+  ↳ app/helpers/challenge_users_helper.rb:7
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/helpers/challenge_users_helper.rb:7
+Completed 200 OK in 208ms (Views: 0.6ms | ActiveRecord: 196.0ms)
+
+
+Started GET "/api/v1/challenge_users/show_act?id=1" for 127.0.0.1 at 2018-10-29 12:20:13 -0500
+Processing by Api::V1::ChallengeUsersController#show_act as HTML
+  Parameters: {"id"=>"1", "challenge_user"=>{}}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallengeUser Load (1.0ms)[0m  [1m[34mSELECT "challenge_users".* FROM "challenge_users" WHERE (user_id = 1 AND fechaFin IS NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:15
+  [1m[36mChallenge Load (2.0ms)[0m  [1m[34mSELECT  "challenges".* FROM "challenges" WHERE "challenges"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:15
+  [1m[36mChallenge Load (1.0ms)[0m  [1m[34mSELECT  "challenges".* FROM "challenges" WHERE "challenges"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:15
+Completed 200 OK in 10ms (Views: 0.9ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/api/v1/challenge_users/finalizarreto" for 127.0.0.1 at 2018-10-29 12:20:16 -0500
+Processing by Api::V1::ChallengeUsersController#finalizarreto as HTML
+  Parameters: {"id"=>1, "challenge_user"=>{"id"=>1}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallengeUser Load (1.0ms)[0m  [1m[34mSELECT  "challenge_users".* FROM "challenge_users" WHERE "challenge_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/challenge_users_helper.rb:12
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/helpers/challenge_users_helper.rb:14
+  [1m[36mChallenge Load (1.0ms)[0m  [1m[34mSELECT  "challenges".* FROM "challenges" WHERE "challenges"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/challenge_users_helper.rb:14
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/challenge_users_helper.rb:14
+  [1m[36mChallengeUser Update (37.0ms)[0m  [1m[33mUPDATE "challenge_users" SET "fechafin" = $1, "updated_at" = $2 WHERE "challenge_users"."id" = $3[0m  [["fechafin", "2018-10-29 17:20:16.696399"], ["updated_at", "2018-10-29 17:20:16.702400"], ["id", 1]]
+  ↳ app/helpers/challenge_users_helper.rb:14
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/helpers/challenge_users_helper.rb:14
+Completed 200 OK in 55ms (Views: 1.3ms | ActiveRecord: 43.0ms)
+
+
+Started GET "/api/v1/challenge_users/show_hist?id=1" for 127.0.0.1 at 2018-10-29 12:20:17 -0500
+Processing by Api::V1::ChallengeUsersController#show_hist as HTML
+  Parameters: {"id"=>"1", "challenge_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallengeUser Load (0.0ms)[0m  [1m[34mSELECT "challenge_users".* FROM "challenge_users" WHERE (user_id = 1 AND fechaFin IS NOT NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:27
+  [1m[36mChallenge Load (0.0ms)[0m  [1m[34mSELECT  "challenges".* FROM "challenges" WHERE "challenges"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:27
+Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/challenge_users/show_act?id=1" for 127.0.0.1 at 2018-10-29 12:20:21 -0500
+Processing by Api::V1::ChallengeUsersController#show_act as HTML
+  Parameters: {"id"=>"1", "challenge_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallengeUser Load (1.0ms)[0m  [1m[34mSELECT "challenge_users".* FROM "challenge_users" WHERE (user_id = 1 AND fechaFin IS NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:15
+  [1m[36mChallenge Load (1.0ms)[0m  [1m[34mSELECT  "challenges".* FROM "challenges" WHERE "challenges"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:15
+Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/challenge_users/show_hist?id=1" for 127.0.0.1 at 2018-10-29 12:20:22 -0500
+Processing by Api::V1::ChallengeUsersController#show_hist as HTML
+  Parameters: {"id"=>"1", "challenge_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallengeUser Load (1.0ms)[0m  [1m[34mSELECT "challenge_users".* FROM "challenge_users" WHERE (user_id = 1 AND fechaFin IS NOT NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:27
+  [1m[36mChallenge Load (1.0ms)[0m  [1m[34mSELECT  "challenges".* FROM "challenges" WHERE "challenges"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:27
+Completed 200 OK in 11ms (Views: 2.1ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/challenge_users/show_disp" for 127.0.0.1 at 2018-10-29 12:36:22 -0500
+Processing by Api::V1::ChallengeUsersController#show_disp as HTML
+  Parameters: {"challenge_user"=>{}}
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallenge Load (2.0ms)[0m  [1m[34mSELECT "challenges".* FROM "challenges" WHERE (id NOT IN (SELECT challenge_id FROM challenge_users WHERE user_id = 1))[0m
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:10
+Completed 200 OK in 10ms (Views: 2.3ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/api/v1/challenge_users/show_act?id=1" for 127.0.0.1 at 2018-10-29 12:36:29 -0500
+Processing by Api::V1::ChallengeUsersController#show_act as HTML
+  Parameters: {"id"=>"1", "challenge_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallengeUser Load (1.0ms)[0m  [1m[34mSELECT "challenge_users".* FROM "challenge_users" WHERE (user_id = 1 AND fechaFin IS NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:15
+  [1m[36mChallenge Load (1.0ms)[0m  [1m[34mSELECT  "challenges".* FROM "challenges" WHERE "challenges"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:15
+Completed 200 OK in 13ms (Views: 2.1ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/challenge_users/show_hist?id=1" for 127.0.0.1 at 2018-10-29 12:36:31 -0500
+Processing by Api::V1::ChallengeUsersController#show_hist as HTML
+  Parameters: {"id"=>"1", "challenge_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallengeUser Load (1.0ms)[0m  [1m[34mSELECT "challenge_users".* FROM "challenge_users" WHERE (user_id = 1 AND fechaFin IS NOT NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:27
+  [1m[36mChallenge Load (1.0ms)[0m  [1m[34mSELECT  "challenges".* FROM "challenges" WHERE "challenges"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:27
+Completed 200 OK in 18ms (Views: 0.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/challenge_users/show_act?id=1" for 127.0.0.1 at 2018-10-29 12:41:11 -0500
+Processing by Api::V1::ChallengeUsersController#show_act as HTML
+  Parameters: {"id"=>"1", "challenge_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallengeUser Load (1.0ms)[0m  [1m[34mSELECT "challenge_users".* FROM "challenge_users" WHERE (user_id = 1 AND fechaFin IS NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:15
+  [1m[36mChallenge Load (1.0ms)[0m  [1m[34mSELECT  "challenges".* FROM "challenges" WHERE "challenges"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:15
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/challenge_users/show?id=3" for 127.0.0.1 at 2018-10-29 12:41:17 -0500
+Processing by Api::V1::ChallengeUsersController#show as HTML
+  Parameters: {"id"=>"3", "challenge_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:43
+  [1m[36mChallenge Load (1.0ms)[0m  [1m[34mSELECT  "challenges".* FROM "challenges" WHERE "challenges"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:19
+  [1m[36mChallengeUser Load (1.0ms)[0m  [1m[34mSELECT  "challenge_users".* FROM "challenge_users" WHERE "challenge_users"."user_id" = $1 AND "challenge_users"."challenge_id" = $2 ORDER BY "challenge_users"."id" DESC LIMIT $3[0m  [["user_id", 1], ["challenge_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:20
+  [1m[36mChallengelevel Load (51.0ms)[0m  [1m[34mSELECT  "challengelevels".* FROM "challengelevels" WHERE "challengelevels"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:21
+  [1m[36mAttachment Load (2.0ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."entity_id" = $1 AND "attachments"."entity_type" = $2[0m  [["entity_id", 3], ["entity_type", "Challenge"]]
+  ↳ app/controllers/api/v1/challenge_users_controller.rb:22
+Completed 200 OK in 805ms (Views: 1.2ms | ActiveRecord: 73.0ms)
+
+
+Started GET "/api/v1/course_users/show_disp" for 127.0.0.1 at 2018-10-29 12:41:25 -0500
+Processing by Api::V1::CourseUsersController#show_disp as HTML
+  Parameters: {"course_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:47
+  [1m[36mCourse Load (5.0ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE (id NOT IN (SELECT course_id FROM course_users WHERE user_id = 1))[0m
+  ↳ app/controllers/api/v1/course_users_controller.rb:12
+Completed 200 OK in 11ms (Views: 1.5ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/api/v1/course_users/show_act?id=1" for 127.0.0.1 at 2018-10-29 12:41:27 -0500
+Processing by Api::V1::CourseUsersController#show_act as HTML
+  Parameters: {"id"=>"1", "course_user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:47
+  [1m[36mCourseUser Load (1.0ms)[0m  [1m[34mSELECT "course_users".* FROM "course_users" WHERE (user_id = 1 AND fechaFin IS NULL) ORDER BY created_at DESC[0m
+  ↳ app/controllers/api/v1/course_users_controller.rb:24
+  [1m[36mCourse Load (0.0ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:24
+Completed 200 OK in 12ms (Views: 0.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/course_users/show?id=1" for 127.0.0.1 at 2018-10-29 12:41:29 -0500
+Processing by Api::V1::CourseUsersController#show as HTML
+  Parameters: {"id"=>"1", "course_user"=>{}}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8570e7628cdb28a519dbdfa25e68a98e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:47
+  [1m[36mCourse Load (1.0ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:16
+  [1m[36mCourseUser Load (1.0ms)[0m  [1m[34mSELECT  "course_users".* FROM "course_users" WHERE "course_users"."user_id" = $1 AND "course_users"."course_id" = $2 ORDER BY "course_users"."id" DESC LIMIT $3[0m  [["user_id", 1], ["course_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:17
+  [1m[36mAttachment Load (1.0ms)[0m  [1m[34mSELECT "attachments".* FROM "attachments" WHERE "attachments"."entity_id" = $1 AND "attachments"."entity_type" = $2[0m  [["entity_id", 1], ["entity_type", "Course"]]
+  ↳ app/controllers/api/v1/course_users_controller.rb:18
+Completed 200 OK in 21ms (Views: 4.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-29 12:44:38 -0500
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#dashboard as HTML
+  Rendering home/dashboard.html.erb within layouts/application
+  [1m[36mCourse Load (1.0ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE (id NOT IN (SELECT course_id FROM course_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:21
+  [1m[36mComplaint Load (1.0ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/home/dashboard.html.erb:54
+  [1m[36mComplaintType Load (2.0ms)[0m  [1m[34mSELECT  "complaint_types".* FROM "complaint_types" WHERE "complaint_types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/dashboard.html.erb:59
+  [1m[36mCACHE ComplaintType Load (0.0ms)[0m  [1m[34mSELECT  "complaint_types".* FROM "complaint_types" WHERE "complaint_types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/dashboard.html.erb:59
+  [1m[36mChallenge Load (1.0ms)[0m  [1m[34mSELECT "challenges".* FROM "challenges" WHERE (id NOT IN (SELECT challenge_id FROM challenge_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:91
+  Rendered home/dashboard.html.erb within layouts/application (22.0ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+Completed 200 OK in 584ms (Views: 536.5ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-29 19:00:24 -0500
+  [1m[35m (26.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (22.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#dashboard as HTML
+  Rendering home/dashboard.html.erb within layouts/application
+  [1m[36mCourse Load (52.0ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE (id NOT IN (SELECT course_id FROM course_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:21
+  [1m[36mComplaint Load (1.0ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/home/dashboard.html.erb:54
+  [1m[36mComplaintType Load (22.0ms)[0m  [1m[34mSELECT  "complaint_types".* FROM "complaint_types" WHERE "complaint_types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/dashboard.html.erb:59
+  [1m[36mCACHE ComplaintType Load (0.0ms)[0m  [1m[34mSELECT  "complaint_types".* FROM "complaint_types" WHERE "complaint_types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/dashboard.html.erb:59
+  [1m[36mChallenge Load (5.0ms)[0m  [1m[34mSELECT "challenges".* FROM "challenges" WHERE (id NOT IN (SELECT challenge_id FROM challenge_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:91
+  Rendered home/dashboard.html.erb within layouts/application (243.0ms)
+  Rendered layouts/_header.html.erb (7.0ms)
+Completed 200 OK in 28553ms (Views: 28216.2ms | ActiveRecord: 99.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-29 19:01:06 -0500
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#dashboard as HTML
+  Rendering home/dashboard.html.erb within layouts/application
+  [1m[36mCourse Load (2.0ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE (id NOT IN (SELECT course_id FROM course_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:21
+  [1m[36mComplaint Load (0.0ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/home/dashboard.html.erb:54
+  [1m[36mComplaintType Load (1.0ms)[0m  [1m[34mSELECT  "complaint_types".* FROM "complaint_types" WHERE "complaint_types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/dashboard.html.erb:59
+  [1m[36mCACHE ComplaintType Load (1.0ms)[0m  [1m[34mSELECT  "complaint_types".* FROM "complaint_types" WHERE "complaint_types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/dashboard.html.erb:59
+  [1m[36mChallenge Load (3.0ms)[0m  [1m[34mSELECT "challenges".* FROM "challenges" WHERE (id NOT IN (SELECT challenge_id FROM challenge_users WHERE user_id = 1))[0m
+  ↳ app/views/home/dashboard.html.erb:91
+  Rendered home/dashboard.html.erb within layouts/application (69.0ms)
+  Rendered layouts/_header.html.erb (6.0ms)
+Completed 200 OK in 578ms (Views: 501.6ms | ActiveRecord: 24.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-10-29 19:01:24 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SJtwZaK4hqwu+lCBO0IrQDqybnOynFXvzt01+7+aFnBq2nB8aYFQN5MhXHtVbxoCkDs1xVHBH9NH/5VKMkFm2A=="}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 41ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-29 19:01:24 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_index.html.erb (11.0ms)
+  Rendered home/index.html.erb within layouts/application (45.0ms)
+Completed 200 OK in 512ms (Views: 482.7ms | ActiveRecord: 0.0ms)
+
+
